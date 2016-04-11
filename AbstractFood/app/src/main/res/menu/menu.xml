@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Recipes Page"
+    android:id="@+id/menu_recipe"/>
+
+    <item android:title="@string/food"
+      android:id="@+id/menu_food"/>
+
+    <item android:title="@string/profile"
+          android:id="@+id/menu_profile"/>
+
+    <item android:title="@string/discover"
+          android:id="@+id/menu_discover"/>
+
+    <item android:title="@string/signup"
+          android:id="@+id/menu_signup"/>
+
+
+    <item android:title="@string/login"
+          android:id="@+id/menu_login"/>
+
+    
+
+</menu>
