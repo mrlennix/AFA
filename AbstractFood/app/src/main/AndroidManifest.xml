@@ -21,13 +21,17 @@
             android:name=".FoodActivity"
             android:label="@string/food">
         </activity>
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".ProfileActivity"
+            android:label="@string/profile">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:label="@string/login">
         </activity>
-        <activity android:name=".SignupActivity">
+        <activity android:name=".SignupActivity"
+            android:label="@string/signup">
         </activity>
-        <activity android:name=".DiscoverActivity">
+        <activity android:name=".DiscoverActivity"
+            android:label="@string/discover">
         </activity>
     </application>
 

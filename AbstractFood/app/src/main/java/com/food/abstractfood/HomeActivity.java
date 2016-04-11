@@ -33,11 +33,33 @@ public class HomeActivity extends AppCompatActivity {
         switch(item.getItemId())
         {
             case R.id.menu_food:food_page();return true;
-            case R.id.menu_login:;return true;
-            case R.id.menu_profile:;return true;
-            case R.id.menu_recipe:;return true;
+            case R.id.menu_login:login_page();return true;
+            case R.id.menu_profile:profile_page();return true;
+            case R.id.menu_discover:discover_page();return true;
+            case R.id.menu_signup:signup_page();return true;
             default: return false;
         }
+    }
+
+    public void signup_page()
+    {
+        Intent next = new Intent(this,SignupActivity.class);
+
+        startActivity(next);
+
+    }
+    public void discover_page()
+    {
+        Intent next = new Intent(this,DiscoverActivity.class);
+
+        startActivity(next);
+    }
+
+    private void profile_page()
+    {
+        Intent next = new Intent(this,ProfileActivity.class);
+
+        startActivity(next);
     }
 
     private void food_page()
@@ -46,5 +68,12 @@ public class HomeActivity extends AppCompatActivity {
 
         startActivity(next);
 
+    }
+
+    private void login_page()
+    {
+        Intent next = new Intent(this,LoginActivity.class);
+
+        startActivity(next);
     }
 }
