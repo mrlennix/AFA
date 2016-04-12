@@ -8,7 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 //Home Page GUI
-//This class controlls all GUI for the Home Page
+//This class controls all GUI for the Home Page
 //please implement the functionality in the HomeController
 public class HomeActivity extends AppCompatActivity {
     //i'm alex

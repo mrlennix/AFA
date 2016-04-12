@@ -3,9 +3,7 @@ package com.food.abstractfood;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Manny on 4/11/16.
- */
+
 public class Report
 {
     private Recipe recipeReported;
