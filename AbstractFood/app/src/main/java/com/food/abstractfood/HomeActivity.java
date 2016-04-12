@@ -41,14 +41,14 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    public void signup_page()
+    private void signup_page()
     {
         Intent next = new Intent(this,SignupActivity.class);
 
         startActivity(next);
 
     }
-    public void discover_page()
+    private void discover_page()
     {
         Intent next = new Intent(this,DiscoverActivity.class);
 
