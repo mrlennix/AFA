@@ -3,7 +3,7 @@
     <string name="Home">Home</string>
     <string name="food">Food</string>
     <string name="profile">Profile</string>
-    <string name="login">Login</string>
+    <string name="login"> Abstract Foods</string>
     <string name="discover">Discover</string>
     <string name="signup">Sign Up!</string>
 </resources>
