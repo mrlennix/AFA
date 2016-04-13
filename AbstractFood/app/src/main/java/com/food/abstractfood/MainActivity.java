@@ -10,10 +10,10 @@ import android.widget.Button;
 
 //Home Page GUI
 //This class controls all GUI for the Home Page
-//please implement the functionality in the HomeController
-public class HomeActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity {
    
-    private HomeController controller;
+    private MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
-        controller = new HomeController();
+        controller = new MainController();
         return super.onCreateOptionsMenu(menu);
     }
 
