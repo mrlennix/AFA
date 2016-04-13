@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Abstract Food</string>
+    <string name="app_name">Abstract Foods</string>
     <string name="Home">Home</string>
     <string name="food">Food</string>
     <string name="profile">Profile</string>
     <string name="login">Login</string>
     <string name="discover">Discover</string>
-    <string name="signup">Signup</string>
+    <string name="signup">Sign Up!</string>
 </resources>
