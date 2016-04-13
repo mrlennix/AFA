@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 //Home Page GUI
 //This class controls all GUI for the Home Page
@@ -13,10 +14,14 @@ import android.view.MenuItem;
 public class HomeActivity extends AppCompatActivity {
     //i'm alex
     private HomeController controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+
     }
 
     @Override
@@ -76,4 +81,5 @@ public class HomeActivity extends AppCompatActivity {
 
         startActivity(next);
     }
+
 }
