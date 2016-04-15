@@ -8,7 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.food.abstractfood.MainActivity">
+    tools:context="com.food.abstractfood.MainActivity"
+    style="@style/all_page_colors"
+    >
 
     <Button
         android:layout_width="wrap_content"
@@ -17,7 +19,9 @@
         android:id="@+id/button4"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        style="@style/all_button_colors"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -27,7 +31,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="37dp"
-        android:layout_alignEnd="@+id/button4" />
+        android:layout_alignEnd="@+id/button4"
+        style="@style/all_button_colors"
+        />
 
     <ImageView
         android:layout_width="wrap_content"
