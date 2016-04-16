@@ -29,7 +29,8 @@
             android:name=".LoginActivity"
             android:label="@string/login">
         </activity>
-        <activity android:name=".ReportActivity"
+        <activity
+            android:name=".ReportActivity"
             android:label="Report">
         </activity>
         <activity

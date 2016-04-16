@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -12,77 +14,86 @@
         android:id="@+id/checkBox"
         android:layout_gravity="center_vertical"
         android:checked="false"
+        android:textColor="#000"
+        android:textStyle="italic"
+        android:textSize="18dp"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:textSize="18dp"/>
+        android:layout_alignStart="@+id/checkBox2"
+        android:layout_marginTop="32dp" />
 
     <TextView
 
 
         android:layout_width="250dp"
         android:layout_height="44dp"
-        android:text="Reasons for reporting the food"
+        android:text="      Reasons for reporting the food"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
-        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="normal"
+        android:textSize="20dp"
         android:layout_marginLeft="30dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignEnd="@+id/button7" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Poisonous Recipe"
         android:id="@+id/checkBox2"
-        android:layout_marginTop="27dp"
         android:checked="false"
+        android:textColor="#000"
+        android:textStyle="italic"
+        android:textSize="18dp"
         android:layout_below="@+id/checkBox"
-        android:layout_alignParentStart="true"
-        android:textSize="18dp"/>
+        android:layout_alignStart="@+id/checkBox3" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inappropriate Images"
         android:id="@+id/checkBox3"
-        android:layout_marginTop="33dp"
         android:checked="false"
+        android:textColor="#000"
+        android:textStyle="italic"
+        android:textSize="18dp"
         android:layout_below="@+id/checkBox2"
-        android:layout_alignParentStart="true"
-        android:textSize="18dp"/>
+        android:layout_alignEnd="@+id/textView7" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Content not Relevant to Food"
         android:id="@+id/checkBox4"
-        android:layout_marginTop="32dp"
         android:checked="false"
+        android:textColor="#000"
+        android:textStyle="italic"
+        android:textSize="18dp"
         android:layout_below="@+id/checkBox3"
-        android:layout_alignParentStart="true"
-        android:textSize="18dp"/>
+        android:layout_alignStart="@+id/checkBox3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Comments"
+        android:text="Comments (optional):"
         android:id="@+id/textView7"
-        android:layout_below="@+id/checkBox4"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="55dp"
-        android:textSize="18dp"/>
+        android:layout_marginLeft="28dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="18dp"
+        android:layout_above="@+id/txtoutput"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="112dp"
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:id="@+id/button6"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="35dp"
         android:backgroundTint="#FF99CC00"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/checkBox" />
+        android:layout_alignStart="@+id/textView" />
 
     <Button
         android:layout_width="112dp"
@@ -90,19 +101,20 @@
         android:text="Submit"
         android:id="@+id/button7"
         android:backgroundTint="#FF99CC00"
-        android:layout_below="@+id/txtoutput"
+        android:layout_alignTop="@+id/button6"
         android:layout_toEndOf="@+id/checkBox4" />
 
 
     <MultiAutoCompleteTextView
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:text="New MultiAutoCompleteTextView"
+        android:layout_height="180dp"
+        android:text=" "
         android:id="@+id/txtoutput"
         android:background="#FFF"
-        android:layout_below="@+id/textView7"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_above="@+id/button6" />
+        android:layout_above="@+id/button6"
+        android:layout_marginBottom="47dp"
+        android:layout_alignStart="@+id/button6"
+        android:layout_alignEnd="@+id/button7" />
 
 
 </RelativeLayout>
