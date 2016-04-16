@@ -19,6 +19,7 @@
         android:ems="10"
         android:id="@+id/foodname_textview"
         android:layout_marginBottom="@dimen/space_between"
+
         />
 
     <Spinner
@@ -64,6 +65,50 @@
 
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/short_des"
+        android:layout_marginTop="@dimen/space_between"
+        android:padding="1dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/description_edit_text"
+        android:hint="@string/short_des"
+        android:layout_gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+
+        android:ellipsize="start"
+        android:maxLength="150"
+        android:background="#FFFFFF"
+        android:lines="5"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/cancel"
+        android:id="@+id/cancel_bt"
+        android:background="@drawable/button"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/ingred"
+        android:id="@+id/ingredient_adder_bt"
+        android:background="@drawable/button"
+        />
+
+</LinearLayout>
 
 
 </LinearLayout>
