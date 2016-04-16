@@ -10,6 +10,7 @@ import android.view.MenuItem;
 //Home Page GUI
 //This class controls all GUI for the Home Page
 
+
 public class MainActivity extends AppCompatActivity {
    
     private MainController controller;
