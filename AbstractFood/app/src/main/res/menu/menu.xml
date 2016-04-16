@@ -25,7 +25,10 @@
 
 
     <item android:title="Update"
-        android:id="@+id/menu_update"
+                android:id="@+id/menu_update"
+    />
+    <item android:title="add res"
+          android:id="@+id/menu_add_recipe"
         />
 
 </menu>
