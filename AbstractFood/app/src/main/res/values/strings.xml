@@ -10,4 +10,5 @@
     <string name="short_des">Short Description:</string>
     <string name="ingred">Ingredient Adder</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_ingredient_adder">IngredientAdderActivity</string>
 </resources>

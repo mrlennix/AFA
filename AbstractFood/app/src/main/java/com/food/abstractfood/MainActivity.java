@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_discover:discover_page();return true;
             case R.id.menu_signup:signup_page();return true;
             case R.id.menu_update:update_page();return true;
+            case R.id.menu_report:report_page();return true;
             default: return false;
         }
     }
@@ -85,7 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void update_page()
     {
-        Intent next = new Intent(this,UpdateActivity.class);
+        Intent next = new Intent(this,UploadActivity.class);
+
+        startActivity(next);
+
+    }
+
+    private void report_page()
+    {
+        Intent next = new Intent(this,ReportActivity.class);
 
         startActivity(next);
 
