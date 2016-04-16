@@ -19,7 +19,7 @@
     <item android:title="@string/Home"
         android:id="@+id/menu_home"/>
 
-    <item android:title="Report"
+    <item android:title="@string/Report"
         android:id="@+id/menu_report"/>
 
 

@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".ReportActivity"
-            android:label="Report">
+            android:label="@string/Report">
         </activity>
         <activity
             android:name=".SignupActivity"

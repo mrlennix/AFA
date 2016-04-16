@@ -6,6 +6,7 @@
     <string name="login"> Abstract Foods</string>
     <string name="discover">Discover</string>
     <string name="signup">Sign Up!</string>
+    <string name="Report">Report</string>
     <string name="main_image">Add Main Image</string>
     <string name="short_des">Short Description:</string>
     <string name="ingred">Ingredient Adder</string>
