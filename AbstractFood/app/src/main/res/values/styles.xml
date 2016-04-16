@@ -9,7 +9,7 @@
         <item name="android:colorBackground">@color/BackgroundColor</item>
     </style>
     <style name="all_button_colors">
-        <item name="android:background">#9ccc65</item>
+        <item name="android:background">@drawable/button</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">10dp</item>
 

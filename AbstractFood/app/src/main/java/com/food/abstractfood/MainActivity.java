@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 
 //Home Page GUI
 //This class controls all GUI for the Home Page
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_profile:profile_page();return true;
             case R.id.menu_discover:discover_page();return true;
             case R.id.menu_signup:signup_page();return true;
+            case R.id.menu_update:update_page();return true;
             default: return false;
         }
     }
@@ -80,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
         Intent next = new Intent(this,LoginActivity.class);
 
         startActivity(next);
+    }
+
+    private void update_page()
+    {
+        Intent next = new Intent(this,UpdateActivity.class);
+
+        startActivity(next);
+
     }
 
 }

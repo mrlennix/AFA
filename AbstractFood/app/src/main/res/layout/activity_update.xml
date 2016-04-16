@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.food.abstractfood.UpdateActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Food Name"
+        android:ems="10"
+        android:id="@+id/foodname_textview"
+        android:layout_marginBottom="@dimen/space_between"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:spinnerMode="dialog"
+        android:layout_marginBottom="@dimen/space_between"
+        android:id="@+id/spinner"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:padding="@dimen/space_between"
+        android:background="@drawable/fake_button"
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="1"
+            android:scaleY="1"
+            android:src="@drawable/plate"
+            android:cropToPadding="false"
+            android:contextClickable="false"
+            android:layout_below="@+id/mainimage_textview"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/mainimage_textview"/>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_image"
+            android:id="@+id/mainimage_textview"
+            android:layout_below="@id/mainimage_textview"
+            android:clickable="true"
+
+
+            />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

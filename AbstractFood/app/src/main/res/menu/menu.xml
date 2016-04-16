@@ -19,6 +19,8 @@
     <item android:title="@string/Home"
         android:id="@+id/menu_home"/>
 
-    
+    <item android:title="Update"
+        android:id="@+id/menu_update"
+        />
 
 </menu>
