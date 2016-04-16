@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_signup:signup_page();return true;
             case R.id.menu_update:update_page();return true;
             case R.id.menu_report:report_page();return true;
+            case R.id.menu_add_recipe:add_res_page();return true;
             default: return false;
         }
     }
@@ -95,6 +96,13 @@ public class MainActivity extends AppCompatActivity {
     private void report_page()
     {
         Intent next = new Intent(this,ReportActivity.class);
+
+        startActivity(next);
+
+    }
+    private void add_res_page()
+    {
+        Intent next = new Intent(this,AddRecipeActivity.class);
 
         startActivity(next);
 

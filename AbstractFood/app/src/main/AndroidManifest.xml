@@ -29,7 +29,8 @@
             android:name=".LoginActivity"
             android:label="@string/login">
         </activity>
-        <activity android:name=".ReportActivity"
+        <activity
+            android:name=".ReportActivity"
             android:label="Report">
         </activity>
         <activity
@@ -54,6 +55,8 @@
             android:name=".IngredientAdderActivity"
             android:label="@string/title_activity_ingredient_adder"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".AddRecipeActivity">
         </activity>
     </application>
 

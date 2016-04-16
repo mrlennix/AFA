@@ -8,7 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/BackgroundColor</item>
     </style>
+<style name="Discovertheme" parent="Theme.AppCompat.Light.NoActionBar">
 
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:colorBackground">@color/BackgroundColor</item>
+
+</style>
     <style name="all_button_colors">
         <item name="android:background">@drawable/button</item>
         <item name="android:textColor">#ffffff</item>
