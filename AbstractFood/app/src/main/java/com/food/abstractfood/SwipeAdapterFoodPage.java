@@ -38,7 +38,6 @@ public class SwipeAdapterFoodPage extends PagerAdapter{
         View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
         ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
         imageView.setImageResource(image_res[position]);
-
         container.addView(item_view);
         return item_view;
 

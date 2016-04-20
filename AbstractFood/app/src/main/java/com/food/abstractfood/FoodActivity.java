@@ -16,5 +16,6 @@ public class FoodActivity extends AppCompatActivity {
         viewPagerFood=(ViewPager) findViewById(R.id.food_page_view_pager);
         swipeAdapterFoodPage=new SwipeAdapterFoodPage(this);
         viewPagerFood.setAdapter(swipeAdapterFoodPage);
+
     }
 }
