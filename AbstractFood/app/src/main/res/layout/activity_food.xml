@@ -134,46 +134,5 @@
         android:background="#FF99CC00"
         android:layout_centerHorizontal="true" />
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:id="@+id/horizontalScrollView"
-        android:layout_below="@+id/editText6"
-        android:layout_alignParentStart="true" >
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:id="@+id/imageView6"
-            android:src="@drawable/fooda"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:id="@+id/imageView7"
-            android:src="@drawable/foodo"
-            />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:id="@+id/imageView8"
-            android:src="@drawable/foode"
-            />
-
-
-    </LinearLayout>
-
-
-    </HorizontalScrollView>
 
 </RelativeLayout>
