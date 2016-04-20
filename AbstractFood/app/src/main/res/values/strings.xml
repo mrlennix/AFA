@@ -4,7 +4,7 @@
     <string name="food">Food</string>
     <string name="profile">Profile</string>
     <string name="login"> Abstract Foods</string>
-    <string name="discover">Discover</string>
+    <string name="discover">Discover!</string>
     <string name="signup">Sign Up!</string>
     <string name="Report">Report</string>
     <string name="main_image">Add Main Image</string>
@@ -17,4 +17,5 @@
     <string name="hello_square">Hello Square World!</string>
     <string name="title_activity_change_passsword">ChangePasssword</string>
     <string name="change_passowrd">Change Password</string>
+    <string name="searchbyname">Search By Name</string>
 </resources>
