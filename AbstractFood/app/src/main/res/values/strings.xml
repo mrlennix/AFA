@@ -12,4 +12,9 @@
     <string name="ingred">Ingredient Adder</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_ingredient_adder">IngredientAdderActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+    <string name="title_activity_change_passsword">ChangePasssword</string>
+    <string name="change_passowrd">Change Password</string>
 </resources>

@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
  * Created by John Doe on 4/19/2016.
  */
 public class SwipeAdapterFoodPage extends PagerAdapter{
-    private int[] image_res={R.drawable.fooda,R.drawable.foodo,R.drawable.foode};
+    private int[] image_res={R.drawable.upload,R.drawable.plate};
     private Context context;
     private LayoutInflater layoutInflater;
 
@@ -38,6 +38,7 @@ public class SwipeAdapterFoodPage extends PagerAdapter{
         View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
         ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
         imageView.setImageResource(image_res[position]);
+
         container.addView(item_view);
         return item_view;
 
