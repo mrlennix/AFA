@@ -48,9 +48,18 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
+                    android:value="@integer/google_play_services_version" />		 +            android:value="@integer/google_play_services_version"/>
 
-        <activity android:name=".UploadActivity">
-        </activity>
+                <activity android:name=".UploadActivity" />
+                <activity
+                    android:name=".ChangePassword"
+                    android:label="@string/change_passowrd" />
+               <activity
+                  android:name=".IngredientAdderActivity"
+                    android:label="@string/title_activity_ingredient_adder"
+                    android:theme="@style/AppTheme.NoActionBar" />
+                <activity android:name=".AddRecipeActivity" />
+
     </application>
 
 </manifest>
