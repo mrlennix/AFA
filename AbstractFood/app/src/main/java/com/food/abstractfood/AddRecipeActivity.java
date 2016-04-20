@@ -11,7 +11,7 @@ public class AddRecipeActivity extends AppCompatActivity
     {
         controller = new AddRecipeController();
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Discovertheme);
+        setTheme(R.style.AddRtheme);
         setContentView(R.layout.activity_add_recipe);
     }
 }
