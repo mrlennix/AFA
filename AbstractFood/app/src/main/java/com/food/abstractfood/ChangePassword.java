@@ -3,11 +3,11 @@ package com.food.abstractfood;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class UpdateActivity extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_change_password);
     }
 }

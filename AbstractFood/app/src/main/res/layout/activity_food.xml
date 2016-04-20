@@ -12,4 +12,127 @@
 
     >
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText6"
+        android:text="Food name"
+        android:layout_alignParentTop="true"
+         />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/food_page_view_pager"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/editText6"
+
+
+        />
+
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/abstract_foods_default_pp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText7"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editText9"
+        android:layout_alignTop="@+id/editText7"
+        android:layout_toEndOf="@+id/editText7"
+        android:text="Date" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List View"
+        android:id="@+id/button8"
+        android:layout_alignParentBottom="true"
+        android:background="#FF99CC00"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step View"
+        android:id="@+id/button9"
+        android:layout_alignBottom="@+id/button8"
+        android:background="#FF99CC00"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="Description"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:background="#FFF"
+        android:layout_alignEnd="@+id/button9" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView4"
+        android:src="@drawable/smileyf"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView5"
+        android:src="@drawable/puker"
+        android:layout_below="@+id/textView8"
+        android:layout_toStartOf="@+id/editText11" />
+
+    <EditText
+        android:layout_width="10dp"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText10"
+        android:layout_below="@+id/textView8"
+        android:layout_alignEnd="@+id/button8"
+        android:layout_toEndOf="@+id/imageView4"
+        android:layout_alignBottom="@+id/editText11"
+        android:text="100" />
+
+    <EditText
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText11"
+        android:text="20"
+        android:layout_below="@+id/textView8"
+        android:layout_alignEnd="@+id/textView8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report"
+        android:id="@+id/button10"
+        android:layout_alignTop="@+id/button9"
+        android:background="#FF99CC00"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

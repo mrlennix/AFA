@@ -1,5 +1,6 @@
 package com.food.abstractfood;
 
+
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -9,16 +10,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by Mistere on 4/15/2016.
+ * Created by John Doe on 4/19/2016.
  */
-public class SwipeAdapterMyFavorites extends PagerAdapter {
+public class SwipeAdapterFoodPage extends PagerAdapter{
     private int[] image_res={R.drawable.upload,R.drawable.plate};
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public SwipeAdapterMyFavorites(Context ctx){
+    public SwipeAdapterFoodPage(Context ctx){
         this.context=ctx;
     }
+
 
 
     @Override
@@ -31,17 +33,19 @@ public class SwipeAdapterMyFavorites extends PagerAdapter {
         return (view==(LinearLayout)object);
     }
 
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container,int position){
         layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View item_view=layoutInflater.inflate(R.layout.swipe_layout,container,false);
-        ImageView imageView= (ImageView)item_view.findViewById(R.id.image_view);
+        View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
+        ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
         imageView.setImageResource(image_res[position]);
         container.addView(item_view);
         return item_view;
+
+
+
     }
 
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(ViewGroup container,int position,Object object){
         container.removeView((LinearLayout)object);
     }
 }

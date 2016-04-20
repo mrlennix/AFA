@@ -76,9 +76,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Username/Password"
-        android:id="@+id/textView2"
+        android:textColor="#1E88E5"
+        android:id="@+id/forgotUsrNameOrPs"
         android:linksClickable="true"
         android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:clickable="true" />
 
 </RelativeLayout>

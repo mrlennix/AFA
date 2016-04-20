@@ -31,15 +31,20 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Password"
-        android:id="@+id/ChangePsButton"
+        android:textSize="15dp"
+
+        android:textColor="#1E88E5"
+        android:id="@+id/ChangePsText"
+
+        android:clickable="true"
+        android:contextClickable="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        style="@style/all_button_colors"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_centerInParent="true"
+        />
 
 
         />
@@ -48,6 +53,7 @@
         android:layout_height="180dp"
         android:layout_width="match_parent"
         android:layout_above="@id/MyFavoritesTxt"
+        android:clickable="true"
 
 
     ></android.support.v4.view.ViewPager>
@@ -56,8 +62,9 @@
         android:id="@+id/view_pager2"
         android:layout_height="180dp"
         android:layout_width="match_parent"
-        android:layout_above="@id/ChangePsButton"
+        android:layout_above="@id/ChangePsText"
         android:layout_below="@id/MyFavoritesTxt"
+        android:clickable="true"
 
 
         ></android.support.v4.view.ViewPager>

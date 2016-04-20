@@ -19,8 +19,16 @@
     <item android:title="@string/Home"
         android:id="@+id/menu_home"/>
 
+    <item android:title="@string/Report"
+        android:id="@+id/menu_report"/>
+
+
+
     <item android:title="Update"
-        android:id="@+id/menu_update"
+                android:id="@+id/menu_update"
+    />
+    <item android:title="add res"
+          android:id="@+id/menu_add_recipe"
         />
 
 </menu>
