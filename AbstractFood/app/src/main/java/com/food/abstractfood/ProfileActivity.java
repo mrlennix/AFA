@@ -57,7 +57,8 @@ public class ProfileActivity extends AppCompatActivity {
         viewPager2.setAdapter(swipeAdapterMyFavorites);
 
 
-        viewPager.setOnClickListener(new View.OnClickListener() {
+        viewPager.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 Log.i("MSG","picture clicked");

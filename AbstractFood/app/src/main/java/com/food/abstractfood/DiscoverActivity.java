@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
+import java.util.ArrayList;
 /*This is the discover activity. where browse and search will
 be implemented. It includes features such as the tabbed layout and
 ability to redirect the user from a few buttons
@@ -18,7 +18,7 @@ public class DiscoverActivity extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewpager;
-
+    private ArrayList<String> ingredientitems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,7 +59,19 @@ public class DiscoverActivity extends AppCompatActivity
        Intent searchbyname = new Intent(this, D_SearchBN.class);
        startActivity(searchbyname);
 
+
    }
+
+    public void redirectIF(View v)
+    {
+
+        ingredientitems = getIntent().getStringArrayListExtra("ingredientitems");
+        Intent ingredientfinder = new Intent(this, D_IngredientFinder.class);
+        ingredientfinder.putStringArrayListExtra("ingredientitems",ingredientitems);
+        startActivity(ingredientfinder);
+
+    }
+
 
 }
 
