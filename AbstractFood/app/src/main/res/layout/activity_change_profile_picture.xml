@@ -10,7 +10,7 @@
         android:id="@+id/profile_pic"
         android:clickable="true"
         android:onClick="ButtonClickListener"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center"
 
 
 

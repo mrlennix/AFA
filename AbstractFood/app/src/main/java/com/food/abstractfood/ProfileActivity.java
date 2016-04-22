@@ -2,7 +2,11 @@ package com.food.abstractfood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -26,6 +30,12 @@ public class ProfileActivity extends AppCompatActivity {
     ViewPager viewPager2;
     SwipeAdapterMyUploads swipeAdapterMyUploads;
     SwipeAdapterMyFavorites swipeAdapterMyFavorites;
+    Bitmap imageSelected;
+    ImageButton imageButton1;
+    ImageButton imageButton;
+    final int select_image=1;
+
+
 
 
     @Override
@@ -56,9 +66,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
         //Image source will be changed later on
-        ImageButton imageButton1=(ImageButton)findViewById(R.id.profile_pic);
-        imageButton1.setImageResource(R.mipmap.test_pro_pic2);
+        imageButton1=(ImageButton)findViewById(R.id.profile_pic);
+        imageButton1.setImageResource(R.mipmap.ic_launcher);
+        imageButton1.setBackgroundResource(R.drawable.round_background);
+
         //Text source will be changed later on
         TextView username=(TextView)findViewById(R.id.username_text_view);
         username.setText(" Username");
@@ -77,6 +90,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
     //when the profile picture is clicked
     public void ButtonClickListener(View v) {
 
@@ -86,10 +103,26 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent,select_image);
             }
         });
+
     }
+
+    //This class will get the image chosen by the user and store it in Bitmap format
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK && requestCode==select_image)
+        {
+            Uri selectedImage=data.getData();
+            imageButton1.setImageURI(selectedImage);
+        }
+
+    }
+
+
+
 
 
     private class SwipeAdapterMyFavorites extends PagerAdapter {
@@ -117,7 +150,7 @@ public class ProfileActivity extends AppCompatActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View item_view=layoutInflater.inflate(R.layout.swipe_layout,container,false);
-            ImageButton imageButton= (ImageButton)item_view.findViewById(R.id.image_button_swipe);
+            imageButton= (ImageButton)item_view.findViewById(R.id.image_button_swipe);
             imageButton.setImageResource(image_res[position]);
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
