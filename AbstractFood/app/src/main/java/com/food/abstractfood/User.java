@@ -1,5 +1,7 @@
 package com.food.abstractfood;
 
+import android.net.Uri;
+
 //USER CLASS STORES INFORMATION ABOUT THE USER
 public class User
 {
@@ -8,6 +10,7 @@ public class User
     private String email;
     private String squestion;
     private String sanswer;
+    private Uri image;
 
     public User(){}
 
@@ -60,8 +63,14 @@ public class User
         this.sanswer = sanswer;
     }
 
+    public Uri getImage() {return image;}
+
+    public void setImage(Uri image) {this.image = image;}
+
     @Override
     public String toString() {
         return getUsername();
     }
+
+
 }

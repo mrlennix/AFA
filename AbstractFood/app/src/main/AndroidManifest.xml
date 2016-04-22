@@ -26,10 +26,6 @@
             android:label="@string/profile">
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/login">
-        </activity>
-        <activity
             android:name=".SignupActivity"
             android:label="@string/signup">
         </activity>

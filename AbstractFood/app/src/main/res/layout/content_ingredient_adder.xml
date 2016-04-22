@@ -11,6 +11,99 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.food.abstractfood.IngredientAdderActivity"
-    tools:showIn="@layout/activity_ingredient_adder">
+    tools:showIn="@layout/activity_ingredient_adder"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/top_adder"
+        android:layout_marginTop="42dp"
+        >
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contextClickable="true"
+            android:spinnerMode="dropdown"
+            android:id="@+id/ingredient_adder_spinner"
+
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            >
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@drawable/plus"
+                android:clickable="true"
+                android:onClick="add"
+                />
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:onClick="subtract"
+                android:src="@drawable/minuss"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/layout_ingredient_plus_minus"
+            >
+
+                <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/ingre"
+
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/top_adder"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skip"
+            android:layout_weight="1"
+            style="@style/all_button_colors"
+            android:layout_marginRight="@dimen/space_between"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Recipe"
+            style="@style/all_button_colors"
+            android:layout_weight="1"
+            />
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

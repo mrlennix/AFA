@@ -6,4 +6,6 @@ package com.food.abstractfood;
 public class AddRecipeController
 {
     public AddRecipeController(){}
+
+
 }

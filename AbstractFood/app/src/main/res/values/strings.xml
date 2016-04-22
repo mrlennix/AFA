@@ -11,6 +11,7 @@
     <string name="short_des">Short Description:</string>
     <string name="ingred">Ingredient Adder</string>
     <string name="cancel">Cancel</string>
+    <string name="ingre">Ingredient</string>
     <string name="title_activity_ingredient_adder">IngredientAdderActivity</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="hello_round">Hello Round World!</string>

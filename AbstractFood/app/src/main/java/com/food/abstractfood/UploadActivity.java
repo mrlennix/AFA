@@ -1,7 +1,9 @@
 package com.food.abstractfood;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -20,4 +22,15 @@ public class UploadActivity extends AppCompatActivity {
         spinner = (Spinner)findViewById(R.id.spinner);
 
     }
+
+
+    public void ingred_adder_page(View v)
+    {
+        Intent next = new Intent(this,IngredientAdderActivity.class);
+
+        startActivity(next);
+
+    }
+
+
 }
