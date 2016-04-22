@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/profile_pic"
         android:clickable="true"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
         android:onClick="ButtonClickListener"
         android:gravity="center"
-
+        android:background="@drawable/round_background"
 
 
         ></ImageButton>
