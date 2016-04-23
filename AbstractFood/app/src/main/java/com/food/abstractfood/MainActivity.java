@@ -2,6 +2,7 @@ package com.food.abstractfood;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //To fix the font of "hint"
+        EditText passwordField=(EditText)findViewById(R.id.passwordLogin);
+        passwordField.setTypeface(Typeface.DEFAULT);
+
         forgotUsername=(TextView)findViewById(R.id.forgotUsrNameOrPs);
         forgotUsername.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(forgotUN,0);
             }
         });
+
+        Button newUser=(Button)findViewById(R.id.newUserButton);
+        newUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(v.getContext(),SignupActivity.class);
+                startActivityForResult(intent,0);
+            }
+        });
+
 
 
 

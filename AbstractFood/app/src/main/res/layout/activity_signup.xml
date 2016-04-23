@@ -18,34 +18,35 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/email_signup"
             android:hint="Email Address"
-            android:layout_below="@+id/editText3"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/username_signup"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:hint="Username"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/username_signup"
+            android:hint="Username"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"
+
+            />
 
         <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:hint="Password"
-        android:id="@+id/passwordtxt"
-            android:layout_marginTop="32dp"
-            android:layout_below="@+id/editText4"
-            android:layout_toStartOf="@+id/signup" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:hint="Password"
+            android:id="@+id/passwordtxt"
+            android:layout_below="@+id/email_signup"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp" />
 
     <EditText
 
@@ -54,10 +55,10 @@
         android:inputType="textPassword"
         android:ems="10"
         android:hint="Verify Password"
-
-        android:id="@+id/editText5"
-        android:layout_below="@+id/textView9"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/verifyPasswordtxt"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/passwordtxt"
+        android:layout_centerHorizontal="true" />
 
 
 
@@ -67,31 +68,22 @@
         android:text="Cancel"
         android:clickable="true"
         android:id="@+id/cancel_signup"
-        android:layout_marginBottom="23dp"
-        android:layout_alignParentBottom="true"
+        style="@style/all_button_colors"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/verifyPasswordtxt"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        style="@style/all_button_colors"/>
+        android:layout_marginStart="37dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign up"
         android:id="@+id/signup"
+        android:onClick="stuff"
+        style="@style/all_button_colors"
         android:layout_alignTop="@+id/cancel_signup"
-        android:layout_toEndOf="@+id/editText5"
-        style="@style/all_button_colors"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView9"
-        android:text="* Password must at least have 8 characters,one uppercase and a number"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/signup" />
-
-
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="34dp" />
 
 
 </RelativeLayout>
