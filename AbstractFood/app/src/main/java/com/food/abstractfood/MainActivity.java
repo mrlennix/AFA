@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private DBmanager database;
     private Button button;
     private EditText username,pass;
+    private TextView forgotUsername;
     //private List<Food> foods;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        forgotUsername=(TextView)findViewById(R.id.forgotUsrNameOrPs);
+        forgotUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotUN=new Intent(v.getContext(),ForgotUsernamePassword.class);
+                startActivityForResult(forgotUN,0);
+            }
+        });
         /*
         Firebase.setAndroidContext(this);
         database = new DBmanager();

@@ -3,6 +3,8 @@ package com.food.abstractfood;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     SwipeAdapterMyUploads swipeAdapterMyUploads;
     SwipeAdapterMyFavorites swipeAdapterMyFavorites;
     Bitmap imageSelected;
-    ImageButton imageButton1;
+    ImageView imageButton1;
     ImageButton imageButton;
     final int select_image=1;
 
@@ -62,10 +65,14 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+
+
         //Image source will be changed later on
-        imageButton1=(ImageButton)findViewById(R.id.profile_pic);
+
+        imageButton1=(ImageView) findViewById(R.id.profile_pic);
         imageButton1.setImageResource(R.mipmap.ic_launcher);
         imageButton1.setBackgroundResource(R.drawable.round_background);
+
 
         //Text source will be changed later on
         TextView username=(TextView)findViewById(R.id.username_text_view);
@@ -93,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void ButtonClickListener(View v) {
 
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.profile_pic);
+        ImageView imageButton = (ImageView) findViewById(R.id.profile_pic);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

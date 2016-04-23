@@ -45,7 +45,7 @@
         android:id="@+id/passwordtxt"
             android:layout_marginTop="32dp"
             android:layout_below="@+id/editText4"
-            android:layout_toStartOf="@+id/button5" />
+            android:layout_toStartOf="@+id/signup" />
 
     <EditText
 
@@ -65,7 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:id="@+id/button4"
+        android:clickable="true"
+        android:id="@+id/cancel_signup"
         android:layout_marginBottom="23dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
@@ -76,8 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign up"
-        android:id="@+id/button5"
-        android:layout_alignTop="@+id/button4"
+        android:id="@+id/signup"
+        android:layout_alignTop="@+id/cancel_signup"
         android:layout_toEndOf="@+id/editText5"
         style="@style/all_button_colors"/>
 
@@ -88,7 +89,7 @@
         android:id="@+id/textView9"
         android:text="* Password must at least have 8 characters,one uppercase and a number"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/button5" />
+        android:layout_toStartOf="@+id/signup" />
 
 
 
