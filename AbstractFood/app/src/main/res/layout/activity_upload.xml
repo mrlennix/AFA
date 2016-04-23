@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,67 +12,33 @@
     android:orientation="vertical"
     tools:context=".UploadActivity">
 
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:hint="Food Name"
-        android:ems="10"
-        android:id="@+id/foodname_textview"
-        android:layout_marginBottom="@dimen/space_between"
-
-        />
+        android:id="@+id/editText12"
+        android:layout_above="@+id/spinner"
+        android:layout_alignParentStart="true"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:spinnerMode="dialog"
-        android:layout_marginBottom="@dimen/space_between"
-        android:id="@+id/spinner"/>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:padding="@dimen/space_between"
-        android:background="@drawable/fake_button"
-
-        >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="1"
-            android:scaleY="1"
-            android:src="@drawable/plate"
-            android:cropToPadding="false"
-            android:contextClickable="false"
-            android:layout_below="@+id/mainimage_textview"
-            android:layout_alignParentStart="true"
-            android:layout_alignEnd="@+id/mainimage_textview"/>
+        android:id="@+id/spinner"
+        android:layout_above="@+id/textView10"
+        android:layout_alignParentEnd="true"/>
 
 
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_image"
-            android:id="@+id/mainimage_textview"
-            android:layout_below="@id/mainimage_textview"
-            android:clickable="true"
-
-
-            />
-
-
-
-    </RelativeLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/short_des"
-        android:layout_marginTop="@dimen/space_between"
         android:padding="1dp"
-        />
+        android:id="@+id/textView10"
+        android:layout_above="@+id/description_edit_text"
+        android:layout_centerHorizontal="true"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,36 +47,64 @@
         android:layout_gravity="top"
         android:inputType="textMultiLine"
         android:maxLines="5"
-
-        android:ellipsize="start"
+        android:paddingTop="0dp"
         android:maxLength="150"
-        android:background="#FFFFFF"
-        android:lines="5"/>
+        android:background="@drawable/background"
+        android:lines="5"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="44dp"/>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
 
-    >
+    android:id="@+id/linearLayout">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginRight="@dimen/space_between"
         android:text="@string/cancel"
+        android:onClick="cancel"
         android:id="@+id/cancel_bt"
         android:background="@drawable/button"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/ingred"
-        android:onClick="ingred_adder_page"
+        android:text="Add Ingredients"
+        android:onClick="ingred_adder"
         android:id="@+id/ingredient_adder_bt"
         android:background="@drawable/button"
         />
 
 </LinearLayout>
 
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:id="@+id/upload_image"
+        android:src="@drawable/uploadimagefoodbutton"
+        android:onClick="getImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ADD MAIN IMAGE"
+        android:id="@+id/textView11"
+        android:textStyle="bold"
+        android:layout_below="@+id/upload_image"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

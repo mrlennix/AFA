@@ -14,6 +14,7 @@ public class DBmanager
     private static final String url ="https://abstractfoods.firebaseio.com";
     private static final String foodpath = "food";
     private static final String userpath = "user";
+    private User u;
 
     public DBmanager()
     {
@@ -33,15 +34,25 @@ public class DBmanager
 
     public User getUser(User user)
     {
-        final User[] u = {new User()};
-        u[0].setUsername(user.getUsername());
+
+        u = user;
+
         database.child(userpath).addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
 
-                u[0] = dataSnapshot.child(u[0].getUsername()).getValue(User.class);
+                User temp = dataSnapshot.child(u.getUsername()).getValue(User.class);
+                if(temp!=null)
+                {
+                    u.setUsername(temp.getUsername());
+                    u.setPassword(temp.getPassword());
+                    u.setEmail(temp.getEmail());
+                    u.setSanswer(temp.getSanswer());
+                    u.setSquestion(temp.getSquestion());
+                    u.setImage(u.getImage());
+               }
             }
 
             @Override
@@ -50,7 +61,7 @@ public class DBmanager
 
             }
         });
-        return u[0];
+        return u;
     }
     public ArrayList<Food> getFood()
     {

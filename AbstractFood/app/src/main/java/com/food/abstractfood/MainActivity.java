@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,10 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(forgotUN,0);
             }
         });
-        /*
+
+
+
         Firebase.setAndroidContext(this);
         database = new DBmanager();
-        Food food = new Food();
+        /*Food food = new Food();
         food.setName("AlexTest");
         food.setDate("1/1/1/1");
         food.setCategory("sex");
@@ -69,11 +76,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+        user = new User();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
         controller = new LoginController();
         username = (EditText)findViewById(R.id.editText);
         pass = (EditText)findViewById(R.id.editText2);
+        username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                user.setUsername(s.toString());
+                System.out.println(user);
+                Toast.makeText(getBaseContext(),s.toString(),Toast.LENGTH_SHORT).show();
+                user = database.getUser(user);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -185,12 +212,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void signin(View v)
     {
-
-        user.setUsername(username.getText().toString());
-        user = database.getUser(user);
+        if(user==null)return;
         System.out.println(user);
         if(pass.getText().toString().equals(user.getPassword()))home_page();
-
 
     }
 }

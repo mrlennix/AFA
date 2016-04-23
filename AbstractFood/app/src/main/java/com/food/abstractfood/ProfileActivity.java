@@ -143,20 +143,24 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
+        public boolean isViewFromObject(View view, Object object)
+        {
             return (view==(LinearLayout)object);
         }
 
 
 
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, int position)
+        {
             layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View item_view=layoutInflater.inflate(R.layout.swipe_layout,container,false);
             imageButton= (ImageButton)item_view.findViewById(R.id.image_button_swipe);
             imageButton.setImageResource(image_res[position]);
-            imageButton.setOnClickListener(new View.OnClickListener() {
+            imageButton.setOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     Intent next = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(next);
                 }

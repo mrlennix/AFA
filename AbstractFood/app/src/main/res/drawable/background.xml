@@ -11,6 +11,6 @@
              android:topRightRadius="@dimen/space_between"
              />
 
-    <stroke android:width="@dimen/space_between" android:color="#000"/>
+    <stroke android:width="1dp" android:color="#000"/>
 
 </shape>

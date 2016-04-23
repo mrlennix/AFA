@@ -1,9 +1,11 @@
 package com.food.abstractfood;
 
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 
-public class Food
+import java.io.Serializable;
+
+public class Food implements Serializable
 {
     private long ID=0;
     private String name="Default_Name";
@@ -13,7 +15,7 @@ public class Food
     private String Date;
     private String username;
     private Recipe recipe;
-    private Uri image;
+    private Bitmap image;
     //still missing stuff... image perhaps?
 
 
@@ -84,11 +86,11 @@ public class Food
         this.recipe = recipe;
     }
 
-    public Uri getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 

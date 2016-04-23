@@ -28,7 +28,7 @@
         android:layout_width="150dp"
         android:layout_height="125dp"
         android:scaleType="centerCrop"
-        android:id="@+id/ingredientfinderbutton"
+        android:id="@+id/upload_image"
         android:src="@drawable/ingredientfinder"
         android:layout_below="@+id/searchbynametxt"
         android:layout_centerHorizontal="true"
@@ -41,7 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="INGREDIENT FINDER"
         android:id="@+id/ingredientfindertxt"
-        android:layout_below="@+id/ingredientfinderbutton"
+        android:layout_below="@+id/upload_image"
         android:layout_centerHorizontal="true" />
 
 
