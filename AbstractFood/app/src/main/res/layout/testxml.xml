@@ -14,12 +14,12 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView7"
-        android:src ="@drawable/addprofilepicture"
+        android:src ="@drawable/settingsicon"
 
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/button11"
-        android:layout_marginTop="66dp" />
+        android:layout_above="@+id/button11"
+        android:layout_alignStart="@+id/button11"
+        android:layout_marginBottom="56dp" />
 </RelativeLayout>

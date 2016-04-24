@@ -176,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     private void update_page()
     {
         Intent next = new Intent(this,UploadActivity.class);
