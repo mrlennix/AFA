@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_report:report_page();return true;
             case R.id.menu_add_recipe:add_res_page();return true;
             case R.id.menu_home:home_page();return true;
+            case R.id.menu_listview:listview_page();return true;
             default: return false;
 
         }
@@ -153,7 +154,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(next);
 
     }
+    private void listview_page()
+    {
+        Intent next = new Intent(this,FoodListViewActivity.class);
 
+        startActivity(next);
+    }
     private void discover_page()
     {
         Intent next = new Intent(this, DiscoverActivity.class);

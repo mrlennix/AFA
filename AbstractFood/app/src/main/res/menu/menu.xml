@@ -26,6 +26,8 @@
         android:id="@+id/menu_report"/>
 
 
+    <item android:title="@string/list_view"
+        android:id="@+id/menu_listview"/>
 
     <item android:title="Update"
                 android:id="@+id/menu_update"
