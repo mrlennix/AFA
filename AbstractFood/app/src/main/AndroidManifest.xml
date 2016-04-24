@@ -35,7 +35,9 @@
         <activity
             android:name=".D_IngredientFinder"
             android:label="@string/IngredientFinderTitle"></activity>
-
+        <activity android:name=".Home"
+            android:label="@string/Home"
+         ></activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

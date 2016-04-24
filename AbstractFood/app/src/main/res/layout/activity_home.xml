@@ -12,50 +12,28 @@
 
     >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Discover"
-        android:id="@+id/button4"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        style="@style/all_button_colors"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload"
-        android:id="@+id/button5"
-        style="@style/all_button_colors"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/imageView2" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:scaleType="fitCenter"
         android:id="@+id/imageView"
-        android:src="@drawable/plate"
-        android:layout_above="@+id/button4"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/discover"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginTop="37dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
         android:id="@+id/imageView2"
         android:src="@drawable/upload"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/button5"
-        android:layout_below="@+id/button4" />
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="210dp"
-        android:layout_marginBottom="56dp"></TableRow>
+
 
 </RelativeLayout>

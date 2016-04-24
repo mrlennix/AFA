@@ -7,13 +7,15 @@
 
     <ImageButton
         android:layout_width="150dp"
-        android:layout_height="125dp"
-        android:scaleType="centerCrop"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="132dp"
+        android:background="@null"
         android:id="@+id/searchbynamebutton"
         android:src="@drawable/searchbyname"
-        android:layout_above="@+id/searchbynametxt"
-        android:layout_centerHorizontal="true"
-        android:onClick="redirectSBN" />
+        android:onClick="redirectSBN"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,27 +23,34 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="SEARCH BY NAME"
         android:id="@+id/searchbynametxt"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/searchbynamebutton" />
+
+        android:layout_below="@+id/searchbynamebutton"
+        android:layout_alignEnd="@+id/ingredientfinderbutton" />
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="125dp"
-        android:scaleType="centerCrop"
-        android:id="@+id/upload_image"
+        android:layout_width="154dp"
+        android:layout_height="154dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:id="@+id/ingredientfinderbutton"
         android:src="@drawable/ingredientfinder"
+        android:onClick="redirectIF"
+
+        android:layout_marginTop="23dp"
         android:layout_below="@+id/searchbynametxt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:onClick="redirectIF" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="INGREDIENT FINDER"
+
+
+
         android:id="@+id/ingredientfindertxt"
-        android:layout_below="@+id/upload_image"
+        android:paddingLeft="0dp"
+        android:layout_below="@+id/ingredientfinderbutton"
         android:layout_centerHorizontal="true" />
 
 
