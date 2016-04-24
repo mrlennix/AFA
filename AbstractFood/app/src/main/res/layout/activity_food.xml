@@ -105,7 +105,7 @@
         android:id="@+id/textView11"
         android:layout_above="@+id/textView8"
         android:layout_alignEnd="@+id/textView8"
-        android:background="#FFF"/>
+        android:background="@null"/>
 
     <TextView
         android:layout_width="40dp"
@@ -115,7 +115,7 @@
         android:id="@+id/textView12"
         android:layout_below="@+id/textView8"
         android:layout_toEndOf="@+id/imageView4"
-        android:background="#FFF"
+        android:background="@null"
         />
 
     <TextView
@@ -124,7 +124,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="20"
         android:id="@+id/textView13"
-        android:background="#FFF"
+        android:background="@null"
         android:layout_below="@+id/textView8"
         android:layout_alignEnd="@+id/textView8" />
 
