@@ -1,8 +1,13 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +17,21 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 public class SignupActivity extends AppCompatActivity {
     private Button cancel;
     private Button signup;
+    private ImageButton addImage;
+    private Uri imageUri;
+    private Bitmap imageBitmap;
     EditText pass;
     EditText verifyPass;
     EditText username;
     EditText email;
     DBmanager dBmanager;
+    private ArrayList<User> tempUsers;
+    private final int id=1;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -38,6 +50,17 @@ public class SignupActivity extends AppCompatActivity {
         email=(EditText) findViewById(R.id.email_signup);
         pass.setTypeface(Typeface.DEFAULT);
         verifyPass.setTypeface(Typeface.DEFAULT);
+
+        addImage=(ImageButton)findViewById(R.id.addprofilepicture);
+        addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToGallery=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(goToGallery,id);
+            }
+        });
+
+
 
         pass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +81,17 @@ public class SignupActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK && requestCode==id)
+        {
+            imageUri=data.getData();
+            addImage.setImageURI(imageUri);
+        }
+    }
+
     public void stuff(View v){
 
         if(pass.getText().toString().equals("")||verifyPass.getText().toString().equals("")||username.getText().toString().equals("")||email.getText().toString().equals(""))
@@ -65,16 +99,35 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"Some fields are incomplete",Toast.LENGTH_LONG).show();
         }
 
-        else {
-            if (!(verifyPass.getText().toString().equals(pass.getText().toString()))) {
+        else
+        {
+            if (!(verifyPass.getText().toString().equals(pass.getText().toString())))
+            {
                 Toast.makeText(getBaseContext(), "Passwords don't match", Toast.LENGTH_LONG).show();
-            } else {
+            } else
+            {
                 User user = new User();
                 user.setPassword(pass.getText().toString());
                 user.setUsername(username.getText().toString());
                 user.setEmail(email.getText().toString());
-                dBmanager.putUser(user);
-                startLogin();
+                //user.setImage(imageUri);
+                int r=checkDuplicates(user);
+                if(r==1)
+                {
+                    Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
+                }
+                if(r==1)
+                {
+                    Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
+                }
+                else  //if the username is already taken
+                {
+                    dBmanager.putUser(user);
+                    startLogin();
+
+
+                }
+
 
             }
         }
@@ -87,6 +140,22 @@ public class SignupActivity extends AppCompatActivity {
         Intent next=new Intent(this,MainActivity.class);
         startActivity(next);
 
+    }
+
+    //This function checks if the username already exists in the database
+    private int checkDuplicates(User user)
+    {
+        tempUsers=dBmanager.getUsers();
+        int i;
+        for(i=0;i<tempUsers.size();i++)
+        {
+            System.out.println(tempUsers.get(i).getUsername());
+            if(tempUsers.get(i).getUsername()==user.getUsername())
+            {
+                return 1;
+            }
+        }
+        return 0;
     }
 
 }

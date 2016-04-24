@@ -74,6 +74,31 @@ public class DBmanager
         });
         return u;
     }
+    
+    public ArrayList<User> getUsers()
+    {
+        final ArrayList<User> users = new ArrayList<>();
+
+        database.child(userpath).addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot shot : dataSnapshot.getChildren())
+                {
+                    User user = shot.getValue(User.class);
+                    users.add(user);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        return users;
+    }
     public ArrayList<Food> getFood()
     {
         final ArrayList<Food> foods = new ArrayList<>();
