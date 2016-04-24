@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e5e5e5">
+
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/randomize"
+        android:src="@drawable/randomize"
+        android:background="@null"
+
+        android:onClick="redirectRandomize"
+        android:layout_marginTop="131dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/swipebycategory" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="RANDOMIZE"
+        android:id="@+id/randomizetxt"
+        android:layout_below="@+id/randomize"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageButton
+        android:layout_width="154dp"
+        android:layout_height="154dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:id="@+id/swipebycategory"
+        android:src="@drawable/swipebycategory"
+        android:onClick="redirectSBC"
+        android:layout_below="@+id/randomize"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="SWIPE BY CATEGORY"
+        android:id="@+id/Swipebycategorytxt"
+        android:layout_below="@+id/swipebycategory"
+        android:layout_centerHorizontal="true" />
+
+
+
+</RelativeLayout>

@@ -40,12 +40,16 @@ public class D_TabLayoutAdapter extends FragmentStatePagerAdapter
         return mFragmentTitleList.get(position);
     }
 
-    public void addFragment(D_SearchTab fragment, String title)
+   public void addSFragment(D_SearchTab fragment, String title)
     {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
-
+    public void addDFragment(D_BrowseTab fragment, String title)
+    {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
 
 
 

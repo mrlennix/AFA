@@ -88,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button newUser=(Button)findViewById(R.id.newUserButton);
+        TextView newUser=(TextView)findViewById(R.id.newuser);
         newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(v.getContext(),SignupActivity.class);
-                startActivityForResult(intent,0);
+                Intent signup =new Intent(v.getContext(),SignupActivity.class);
+                startActivityForResult(signup,0);
             }
         });
 
@@ -102,15 +102,19 @@ public class MainActivity extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
         database = new DBmanager();
-        /*Food food = new Food();
-        food.setName("AlexTest");
-        food.setDate("1/1/1/1");
-        food.setCategory("sex");
-        food.setID(1111114);
+        Food food = new Food();
+        food.setName("Pancakes");
+        food.setDate("04/26/2016");
+        food.setCategory("Breakfast Food");
+        food.setID(0000001);
+        food.setDescription("Delicious hotcakes made to perfection.");
+        String[] tempingri = {"Eggs","Milk","Butter"};
+        food.setIngredientscontained(tempingri);
+        food.setUsername("ghh");
 
         database.putFood(food);
-        foods =database.getFood();
-        */
+
+
     }
 
 

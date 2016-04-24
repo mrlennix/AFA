@@ -26,7 +26,8 @@ public class UploadActivity extends AppCompatActivity {
 
     private Food food = new Food();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         Firebase.setAndroidContext(this);
         controller = new UploadController();
         super.onCreate(savedInstanceState);
@@ -69,12 +70,12 @@ public class UploadActivity extends AppCompatActivity {
         Bitmap map=null;
         food.setName(foodname.getText().toString());
         food.setDescription(description.getText().toString());
-        try {
-             map = MediaStore.Images.Media.getBitmap(this.getContentResolver(),image);
-        } catch (IOException e) {
-
+        try
+        {
+            map = MediaStore.Images.Media.getBitmap(this.getContentResolver(),image);
         }
-        food.setImage(map);
+        catch (IOException e) {}
+        //food.setImage(map);
         food.setID(444444);
         next.putExtra("food",food);
         database.putFood(food);

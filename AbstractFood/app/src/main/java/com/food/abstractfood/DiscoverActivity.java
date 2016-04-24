@@ -46,8 +46,8 @@ public class DiscoverActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewpager)
     {
         D_TabLayoutAdapter adapter = new D_TabLayoutAdapter(getSupportFragmentManager()); //adapter for tabs
-        adapter.addFragment(new D_SearchTab(), "Search");
-        adapter.addFragment(new D_SearchTab(), "Browse");
+        adapter.addSFragment(new D_SearchTab(), "Search");
+        adapter.addDFragment(new D_BrowseTab(), "Browse");
         viewpager.setAdapter(adapter);
     }
 

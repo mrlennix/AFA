@@ -12,6 +12,16 @@
 
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView344"
+        android:src="@drawable/logo"
+        android:alpha=".25"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,32 +45,35 @@
         android:layout_marginTop="30dp"
         android:hint="Password"
         android:password="false"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"/>
 
     <Button
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign In"
         android:id="@+id/button"
         android:layout_below="@+id/passwordLogin"
         android:layout_alignParentStart="true"
         android:layout_marginTop="51dp"
-        style="@style/all_button_colors"
+
         android:onClick="signin"
         android:layout_alignParentEnd="true" />
 
-    <Button
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+   <!-- <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="new user"
         android:id="@+id/newUserButton"
         android:layout_marginTop="52dp"
+        android:id="@+id/button2"
+
         android:layout_below="@+id/button"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        style="@style/all_button_colors"
-        />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -69,10 +82,11 @@
         android:id="@+id/button3"
         android:layout_below="@+id/newUserButton"
         android:layout_marginTop="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        style="@style/all_button_colors"/>
 
+        android:layout_below="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,5 +97,29 @@
         android:layout_below="@+id/passwordLogin"
         android:layout_centerHorizontal="true"
         android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don&apos;t have an account?"
+        android:id="@+id/question"
+        android:clickable="false"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/button"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="52dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up!"
+        android:paddingLeft="5dp"
+        android:textColor="#1E88E5"
+        android:id="@+id/newuser"
+        android:linksClickable="true"
+        android:clickable="true"
+        android:layout_alignTop="@+id/question"
+        android:layout_toEndOf="@+id/question" />
+
 
 </RelativeLayout>
