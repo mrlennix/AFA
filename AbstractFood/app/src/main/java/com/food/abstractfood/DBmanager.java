@@ -46,13 +46,21 @@ public class DBmanager
                 User temp = dataSnapshot.child(u.getUsername()).getValue(User.class);
                 if(temp!=null)
                 {
-                    u.setUsername(temp.getUsername());
+
                     u.setPassword(temp.getPassword());
                     u.setEmail(temp.getEmail());
                     u.setSanswer(temp.getSanswer());
                     u.setSquestion(temp.getSquestion());
                     u.setImage(u.getImage());
-               }
+               }else
+                {
+                    u.setPassword(null);
+                    u.setEmail(null);
+                    u.setSanswer(null);
+                    u.setSquestion(null);
+                    u.setImage(null);
+
+                }
             }
 
             @Override

@@ -41,8 +41,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        setContentView(R.layout.activity_login);
+        user = new User();
+
+        controller = new LoginController();
+        username = (EditText)findViewById(R.id.editText);
+
+        username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().equals(""))return;
+                user.setUsername(s.toString());
+                user = database.getUser(user);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        pass = (EditText)findViewById(R.id.passwordLogin);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // set the app to start at the login
+         // set the app to start at the login
         try {
             loadIngredients();
         } catch (IOException e) {
@@ -91,31 +117,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        user = new User();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
-        controller = new LoginController();
-        username = (EditText)findViewById(R.id.editText);
-        pass = (EditText)findViewById(R.id.editText2);
-        username.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                user.setUsername(s.toString());
-                System.out.println(user);
-                Toast.makeText(getBaseContext(),s.toString(),Toast.LENGTH_SHORT).show();
-                user = database.getUser(user);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -227,9 +231,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void signin(View v)
     {
-        if(user==null)return;
-        System.out.println(user);
-        if(pass.getText().toString().equals(user.getPassword()))home_page();
+        if(user.getPassword()==null)
+        {
+            Toast.makeText(getBaseContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(pass.getText().toString().equals(user.getPassword().toString()))
+            profile_page();
 
     }
 }
