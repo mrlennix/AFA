@@ -7,82 +7,98 @@ import java.io.Serializable;
 
 public class Food implements Serializable
 {
-    private long ID=0;
-    private String name="Default_Name";
-    private String[] ingredientscontained = new String[400];
-    private String category = "Default_Category";
-    private String description ="The food description goes here";
+    private long ID;
+    private String name;
+    private String[] ingredientscontained;
+    private String category;
+    private String description;
     private String Date;
     private String username;
-    private Recipe recipe;
-    private Bitmap image;
+    //private Recipe recipe;
+    //private Bitmap image;
     //still missing stuff... image perhaps?
 
 
     public Food (){}
 
 
-    public long getID() {
+    public long getID()
+    {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(long ID)
+    {
         this.ID = ID;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String[] getIngredientscontained() {
+    public String[] getIngredientscontained()
+    {
         return ingredientscontained;
     }
 
-    public void setIngredientscontained(String[] ingredientscontained) {
+    public void setIngredientscontained(String[] ingredientscontained)
+    {
         this.ingredientscontained = ingredientscontained;
     }
 
-    public String getCategory() {
+    public String getCategory()
+    {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(String category)
+    {
         this.category = category;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return Date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         Date = date;
     }
 
-    public String getUsername() {
+    public String getUsername()
+    {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         this.username = username;
     }
-
-    public Recipe getRecipe() {
+/*
+    public Recipe getRecipe()
+    {
         return recipe;
     }
 
-    public void setRecipe(Recipe recipe) {
+    public void setRecipe(Recipe recipe)
+    {
         this.recipe = recipe;
     }
 
@@ -93,9 +109,10 @@ public class Food implements Serializable
     public void setImage(Bitmap image) {
         this.image = image;
     }
-
+*/
     @Override
-    public String toString() {
+    public String toString()
+    {
         return name;
     }
 }

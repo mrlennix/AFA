@@ -14,12 +14,16 @@ public class DBmanager
     private static final String url ="https://abstractfoods.firebaseio.com";
     private static final String foodpath = "food";
     private static final String userpath = "user";
+    private ArrayList<String> foodnames;
+
     private User u;
 
     public DBmanager()
     {
         if(database==null)
         setDatabase(new Firebase(url));
+        foodnames = new ArrayList<>();
+
     }
 
     public void putFood(Food food)
@@ -34,9 +38,8 @@ public class DBmanager
 
     public User getUser(User user)
     {
-
-        u = user;
-
+         u = user;
+      
         database.child(userpath).addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -70,8 +73,7 @@ public class DBmanager
         database.child(foodpath).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot shot : dataSnapshot.getChildren())
-                {
+                for (DataSnapshot shot : dataSnapshot.getChildren()) {
                     Food foo = shot.getValue(Food.class);
                     foods.add(foo);
                 }
@@ -84,6 +86,34 @@ public class DBmanager
         });
 
         return foods;
+    }
+    public ArrayList<String> getFoodNames()
+    {
+
+
+        database.child(foodpath).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                String tempfoodname;
+
+                for (DataSnapshot shot : dataSnapshot.getChildren())
+                {
+                    tempfoodname = shot.getValue(Food.class).getName();
+                    foodnames.add(tempfoodname);
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        return foodnames;
+
     }
 
     public Firebase getDatabase() {
