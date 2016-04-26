@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private EditText username,pass;
     private TextView forgotUsername;
-    //private List<Food> foods;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -95,6 +95,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+        Food food = new Food();
+        food.setName("Pancakes");
+        food.setDate("04/26/2016");
+        food.setCategory("Breakfast Food");
+        food.setID(0000001);
+        food.setDescription("Delicious hotcakes made to perfection.");
+        String[] tempingri = {"Eggs","Milk","Butter"};
+        food.setIngredientscontained(tempingri);
+        food.setUsername("ghh");
+
+        database.putFood(food);
 
 
     }
@@ -191,7 +203,8 @@ public class MainActivity extends AppCompatActivity {
     private void home_page()
     {
         Intent next = new Intent(this,Home.class);
-
+        user.encodeToBase64();
+        next.putExtra("user",user);
         startActivity(next);
 
     }
@@ -241,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         }
         System.err.println(user.getPassword());
         if(pass.getText().toString().equals(user.getPassword().toString()))
-            profile_page();
+            home_page();
 
     }
 }

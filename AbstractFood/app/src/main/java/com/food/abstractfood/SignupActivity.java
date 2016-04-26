@@ -118,7 +118,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 if(r==1)
                 {
-                    Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Username already exists", Toast.LENGTH_LONG).show();
                 }
                 else  //if the username is already taken
                 {

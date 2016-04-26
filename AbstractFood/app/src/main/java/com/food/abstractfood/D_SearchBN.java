@@ -1,6 +1,7 @@
 package com.food.abstractfood;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -10,9 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.firebase.client.Firebase;
 import java.io.InterruptedIOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,11 +36,15 @@ public class D_SearchBN extends AppCompatActivity
     private ArrayAdapter<String> adapter;
     private ListView listView;
     private EditText editText;
-    private String foodselected;
+    private String foodname;
     private DBmanager foodgrabber;
+    private Food foodselected;
+    private  User user;
 
     protected void onCreate(Bundle savedInstanceState)
     {
+        foodselected = new Food();
+
 
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
@@ -56,8 +63,7 @@ public class D_SearchBN extends AppCompatActivity
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
 
             }
@@ -66,8 +72,7 @@ public class D_SearchBN extends AppCompatActivity
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-                if (s.toString().equals(""))
-                {
+                if (s.toString().equals("")) {
                     // reset listview
                     initList();
 
@@ -86,14 +91,20 @@ public class D_SearchBN extends AppCompatActivity
             }
 
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
 
-                foodselected = listItems.get(position).toString();
+                foodname  = (String) (parent.getItemAtPosition(position));
+                foodselected.setName(foodname);
+                foodselected= foodgrabber.getOneFood(foodselected);
+                Intent foodactivity = new Intent(view.getContext(),FoodActivity.class);
+                foodactivity.putExtra("selectedfood",foodselected);
+                foodactivity.putExtra("user",user);
+                startActivity(foodactivity);
 
-
-                //this will send it the food activity!!!
 
 
             }

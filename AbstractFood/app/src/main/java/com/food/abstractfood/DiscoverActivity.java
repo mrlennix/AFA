@@ -19,6 +19,7 @@ public class DiscoverActivity extends AppCompatActivity
     private TabLayout tabLayout;
     private ViewPager viewpager;
     private ArrayList<String> ingredientitems;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +27,7 @@ public class DiscoverActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setTheme(R.style.NoActionBarTheme); //removing the default action bar
         setContentView(R.layout.activity_discover); // setting up layout
-
+        user = (User)getIntent().getSerializableExtra("user");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); //tool bar for tabs
         setSupportActionBar(toolbar); // this will be our new actionbar
@@ -57,6 +58,7 @@ public class DiscoverActivity extends AppCompatActivity
    public void redirectSBN(View v)
    {
        Intent searchbyname = new Intent(this, D_SearchBN.class);
+       searchbyname.putExtra("user",user);
        startActivity(searchbyname);
 
 

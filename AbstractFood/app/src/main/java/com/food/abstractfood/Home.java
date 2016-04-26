@@ -9,11 +9,12 @@ import android.widget.ImageButton;
 
 
 public class Home extends AppCompatActivity {
-
+    private User user;
 
 
     protected void onCreate(Bundle savedInstanceState)
     {
+        user = (User) getIntent().getSerializableExtra("user");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
     }
@@ -21,7 +22,9 @@ public class Home extends AppCompatActivity {
          public void redirectDiscover(View view)
             {
                 Intent intent = new Intent(view.getContext(), DiscoverActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
+
 
 
 
