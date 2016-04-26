@@ -3,8 +3,6 @@ package com.food.abstractfood;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    private User user;
     ViewPager viewPager;
     ViewPager viewPager2;
     SwipeAdapterMyUploads swipeAdapterMyUploads;
@@ -39,14 +37,17 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        user = (User)getIntent().getSerializableExtra("user");
+        user.decodeBase64();
+        setTitle(user.getUsername());
         ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(R.layout.activity_change_profile_picture);
-        actionBar.setTitle(null);
+        actionBar.setTitle(user.getUsername());
         actionBar.setDisplayShowCustomEnabled(true);
 
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+
         viewPager2 = (ViewPager) findViewById(R.id.view_pager2);
         swipeAdapterMyUploads = new SwipeAdapterMyUploads(this);
         swipeAdapterMyFavorites = new SwipeAdapterMyFavorites(this);
@@ -71,12 +72,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         imageButton1=(ImageView) findViewById(R.id.profile_pic);
         imageButton1.setImageResource(R.mipmap.ic_launcher);
+        if(user.getImage()!=null)imageButton1.setImageBitmap(user.getImage());
         imageButton1.setBackgroundResource(R.drawable.round_background);
 
 
         //Text source will be changed later on
         TextView username=(TextView)findViewById(R.id.username_text_view);
-        username.setText(" Username");
+        username.setText(user.getUsername());
 
 
 

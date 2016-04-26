@@ -28,12 +28,16 @@ public class DBmanager
 
     public void putFood(Food food)
     {
-     database.child(foodpath).child(String.valueOf(food.getID())).setValue(food);
+        food.encodeToBase64();
+        database.child(foodpath).child(String.valueOf(food.getID())).setValue(food);
     }
 
     public void putUser(User user)
     {
+
+        user.encodeToBase64();
         database.child(userpath).child(user.getUsername()).setValue(user);
+        user.decodeBase64();
     }
 
     public User getUser(User user)
@@ -55,15 +59,19 @@ public class DBmanager
                     u.setSanswer(temp.getSanswer());
                     u.setSquestion(temp.getSquestion());
                     u.setImage(u.getImage());
-               }else
-                {
-                    u.setPassword(null);
-                    u.setEmail(null);
-                    u.setSanswer(null);
-                    u.setSquestion(null);
-                    u.setImage(null);
+                    u.setCompressedImage(temp.getCompressedImage());
 
-                }
+               }
+//                else
+//                {
+//                    u.setPassword(null);
+//                    u.setEmail(null);
+//                    u.setSanswer(null);
+//                    u.setSquestion(null);
+//                    u.setImage(null);
+//                    u.setCompressedImage(null);
+//
+//                }
             }
 
             @Override
@@ -108,6 +116,7 @@ public class DBmanager
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
                     Food foo = shot.getValue(Food.class);
+                    foo.decodeBase64();
                     foods.add(foo);
                 }
             }

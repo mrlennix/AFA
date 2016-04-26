@@ -94,6 +94,7 @@
         android:textColor="#1E88E5"
         android:id="@+id/forgotUsrNameOrPs"
         android:linksClickable="true"
+        android:onClick="forgotname"
         android:layout_below="@+id/passwordLogin"
         android:layout_centerHorizontal="true"
         android:clickable="true" />
@@ -114,6 +115,7 @@
         android:layout_height="wrap_content"
         android:text="Sign up!"
         android:paddingLeft="5dp"
+        android:onClick="signup"
         android:textColor="#1E88E5"
         android:id="@+id/newuser"
         android:linksClickable="true"

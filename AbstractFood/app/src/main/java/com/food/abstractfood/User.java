@@ -1,16 +1,22 @@
 package com.food.abstractfood;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 //USER CLASS STORES INFORMATION ABOUT THE USER
-public class User
+public class User implements Serializable
 {
     private String username;
     private String password;
     private String email;
     private String squestion;
     private String sanswer;
-    private Uri image;
+    private Bitmap image;
+    private String compressedImage;
 
     public User(){}
 
@@ -63,14 +69,40 @@ public class User
         this.sanswer = sanswer;
     }
 
-    public Uri getImage() {return image;}
+    public Bitmap getImage() {return image;}
 
-    public void setImage(Uri image) {this.image = image;}
+    public void setImage(Bitmap image) {this.image = image;}
+
+
 
     @Override
     public String toString() {
         return getUsername();
     }
 
+    public void encodeToBase64()
+    {
+        if(image==null)return;
+        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOS);
+        setCompressedImage(Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT));
+        image=null;
 
+    }
+
+    public void decodeBase64()
+    {
+        if(getCompressedImage() ==null)return;
+        byte[] decodedBytes = Base64.decode(getCompressedImage(), 0);
+        image =  BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+        setCompressedImage(null);
+    }
+
+    public String getCompressedImage() {
+        return compressedImage;
+    }
+
+    public void setCompressedImage(String compressedImage) {
+        this.compressedImage = compressedImage;
+    }
 }

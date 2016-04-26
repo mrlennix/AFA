@@ -41,10 +41,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
+        Firebase.setAndroidContext(this);
+        database = new DBmanager();
+
         setContentView(R.layout.activity_login);
+        super.onCreate(savedInstanceState);
         user = new User();
 
         controller = new LoginController();
+
         username = (EditText)findViewById(R.id.editText);
 
         username.addTextChangedListener(new TextWatcher() {
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if(s.toString().equals(""))return;
                 user.setUsername(s.toString());
                 user = database.getUser(user);
+                Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -67,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         pass = (EditText)findViewById(R.id.passwordLogin);
-        super.onCreate(savedInstanceState);
+        //Don't need these at login
          // set the app to start at the login
         try {
             loadIngredients();
@@ -80,39 +87,14 @@ public class MainActivity extends AppCompatActivity {
         passwordField.setTypeface(Typeface.DEFAULT);
 
         forgotUsername=(TextView)findViewById(R.id.forgotUsrNameOrPs);
-        forgotUsername.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent forgotUN=new Intent(v.getContext(),ForgotUsernamePassword.class);
-                startActivityForResult(forgotUN,0);
-            }
-        });
+
 
         TextView newUser=(TextView)findViewById(R.id.newuser);
-        newUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signup =new Intent(v.getContext(),SignupActivity.class);
-                startActivityForResult(signup,0);
-            }
-        });
 
 
 
 
-        Firebase.setAndroidContext(this);
-        database = new DBmanager();
-        Food food = new Food();
-        food.setName("Pancakes");
-        food.setDate("04/26/2016");
-        food.setCategory("Breakfast Food");
-        food.setID(0000001);
-        food.setDescription("Delicious hotcakes made to perfection.");
-        String[] tempingri = {"Eggs","Milk","Butter"};
-        food.setIngredientscontained(tempingri);
-        food.setUsername("ghh");
 
-        database.putFood(food);
 
 
     }
@@ -170,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
     private void profile_page()
     {
         Intent next = new Intent(this,ProfileActivity.class);
+        user.encodeToBase64();
+        next.putExtra("user",user);
 
         startActivity(next);
     }
@@ -236,6 +220,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void forgotname(View v)
+    {
+        Intent forgotUN = new Intent(this,ForgotUsernamePassword.class);
+        startActivity(forgotUN);
+
+    }
+
+    public void signup(View v)
+    {
+        Intent signup =new Intent(this,SignupActivity.class);
+        startActivityForResult(signup,0);
+    }
 
     public void signin(View v)
     {
@@ -244,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"Invalid Username or Password",Toast.LENGTH_SHORT).show();
             return;
         }
+        System.err.println(user.getPassword());
         if(pass.getText().toString().equals(user.getPassword().toString()))
             profile_page();
 

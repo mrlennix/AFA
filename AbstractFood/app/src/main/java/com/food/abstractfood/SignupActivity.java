@@ -1,9 +1,7 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +15,7 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SignupActivity extends AppCompatActivity {
@@ -24,7 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button signup;
     private ImageButton addImage;
     private Uri imageUri;
-    private Bitmap imageBitmap;
+    private Bitmap imageBitmap=null;
     EditText pass;
     EditText verifyPass;
     EditText username;
@@ -88,6 +87,10 @@ public class SignupActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK && requestCode==id)
         {
             imageUri=data.getData();
+            try
+            {
+                imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageUri);
+            } catch (IOException e) {}
             addImage.setImageURI(imageUri);
         }
     }
@@ -110,12 +113,9 @@ public class SignupActivity extends AppCompatActivity {
                 user.setPassword(pass.getText().toString());
                 user.setUsername(username.getText().toString());
                 user.setEmail(email.getText().toString());
-                //user.setImage(imageUri);
+                user.setImage(imageBitmap);
                 int r=checkDuplicates(user);
-                if(r==1)
-                {
-                    Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
-                }
+
                 if(r==1)
                 {
                     Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
