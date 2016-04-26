@@ -1,10 +1,8 @@
 package com.food.abstractfood;
 
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +12,15 @@ public class ChangePassword extends AppCompatActivity {
     private Button done;
     private EditText pass;
     private EditText verifyP;
-
+    private User user;
+    private DBmanager database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        database = new DBmanager();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-
+        user = (User) getIntent().getSerializableExtra("user");
+        database.getUser(user);
         //To fix the font of "hint"
          pass = (EditText) findViewById(R.id.passwordChangePS);
         verifyP = (EditText) findViewById(R.id.verifyPasswordChangePs);
@@ -53,7 +54,8 @@ public class ChangePassword extends AppCompatActivity {
                                     Toast.makeText(getBaseContext(), "Passwords don't match", Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(getBaseContext(), "Password Changed", Toast.LENGTH_SHORT).show();
-
+                                    user.setPassword(verifyP.getText().toString());
+                                    database.putUser(user);
                                     finish();
                                 }
                             }

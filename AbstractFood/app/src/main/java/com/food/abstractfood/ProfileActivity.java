@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
     private User user;
+    private String compressed;
     ViewPager viewPager;
     ViewPager viewPager2;
     SwipeAdapterMyUploads swipeAdapterMyUploads;
@@ -33,11 +34,13 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         user = (User)getIntent().getSerializableExtra("user");
+       compressed = user.getCompressedImage();
         user.decodeBase64();
         setTitle(user.getUsername());
         ActionBar actionBar = getSupportActionBar();
@@ -83,13 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         TextView changeP = (TextView) findViewById(R.id.ChangePsText);
-        changeP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ChangePassword.class);
-                startActivityForResult(intent, 0);
-            }
-        });
+
 
 
     }
@@ -223,7 +220,14 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-
+    public void changePass(View v)
+    {
+        Intent specialIntent = new Intent(this, ChangePassword.class);
+        User u = new User();
+        u.setUsername(user.getUsername());
+        specialIntent.putExtra("user",u);
+        startActivity(specialIntent);
+    }
 
 
 
