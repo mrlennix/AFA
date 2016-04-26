@@ -58,20 +58,20 @@ public class DBmanager
                     u.setEmail(temp.getEmail());
                     u.setSanswer(temp.getSanswer());
                     u.setSquestion(temp.getSquestion());
-                    u.setImage(u.getImage());
+                    u.setImage(temp.getImage());
                     u.setCompressedImage(temp.getCompressedImage());
-
+                    u.decodeBase64();
                }
-//                else
-//                {
-//                    u.setPassword(null);
-//                    u.setEmail(null);
-//                    u.setSanswer(null);
-//                    u.setSquestion(null);
-//                    u.setImage(null);
-//                    u.setCompressedImage(null);
-//
-//                }
+                else
+                {
+                    u.setPassword(null);
+                    u.setEmail(null);
+                    u.setSanswer(null);
+                    u.setSquestion(null);
+                    u.setImage(null);
+                    u.setCompressedImage(null);
+
+                }
             }
 
             @Override

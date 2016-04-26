@@ -84,9 +84,9 @@ public class User implements Serializable
     {
         if(image==null)return;
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOS);
+        image.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOS);
         setCompressedImage(Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT));
-        image=null;
+        setImage(null);
 
     }
 

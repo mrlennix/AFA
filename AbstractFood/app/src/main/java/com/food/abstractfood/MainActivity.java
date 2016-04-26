@@ -153,8 +153,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent next = new Intent(this,ProfileActivity.class);
         user.encodeToBase64();
-        next.putExtra("user",user);
-
+        next.putExtra("object",user);
         startActivity(next);
     }
 

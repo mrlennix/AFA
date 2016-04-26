@@ -30,17 +30,18 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView imageButton1;
     ImageButton imageButton;
     final int select_image=1;
-
+    private DBmanager database;
 
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        database = new DBmanager();
+        user = (User)getIntent().getSerializableExtra("object");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        user = (User)getIntent().getSerializableExtra("user");
-       compressed = user.getCompressedImage();
+        compressed = user.getCompressedImage();
         user.decodeBase64();
         setTitle(user.getUsername());
         ActionBar actionBar = getSupportActionBar();
@@ -71,12 +72,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        //Image source will be changed later on
-
-        imageButton1=(ImageView) findViewById(R.id.profile_pic);
-        imageButton1.setImageResource(R.mipmap.ic_launcher);
-        if(user.getImage()!=null)imageButton1.setImageBitmap(user.getImage());
-        imageButton1.setBackgroundResource(R.drawable.round_background);
 
 
         //Text source will be changed later on
@@ -87,6 +82,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         TextView changeP = (TextView) findViewById(R.id.ChangePsText);
 
+        //Image source will be changed later on
+
+        imageButton1=(ImageView) findViewById(R.id.profile_pic);
+        imageButton1.setImageResource(R.mipmap.ic_launcher);
+        if(user.getImage()!=null)imageButton1.setImageBitmap(user.getImage());
+        imageButton1.setBackgroundResource(R.drawable.round_background);
 
 
     }
