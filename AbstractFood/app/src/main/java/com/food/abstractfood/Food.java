@@ -125,7 +125,7 @@ public class Food implements Serializable
     {
         if(image==null)return;
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOS);
+        image.compress(Bitmap.CompressFormat.JPEG, 1, byteArrayOS);
         compressedImage = Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
         image=null;
 
