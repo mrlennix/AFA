@@ -2,6 +2,8 @@ package com.food.abstractfood;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -91,21 +93,6 @@ public class MainActivity extends AppCompatActivity {
         TextView newUser=(TextView)findViewById(R.id.newuser);
 
 
-
-
-
-
-        Food food = new Food();
-        food.setName("Burger");
-        food.setDate("04/26/2016");
-        food.setCategory("Breakfast Food");
-        food.setID(0000001);
-        food.setDescription("Delicious hotcakes made to perfection.");
-        String[] tempingri = {"Eggs","Milk","Butter"};
-        food.setIngredientscontained(tempingri);
-        food.setUsername("ghh");
-
-        database.putFood(food);
 
 
     }

@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:id="@+id/username_text_view"
         android:textStyle="bold"
+        android:textAllCaps="true"
         android:textSize="25dp"></TextView>
 
 

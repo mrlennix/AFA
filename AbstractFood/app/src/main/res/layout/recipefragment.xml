@@ -12,14 +12,14 @@
         android:layout_alignTop="@+id/add_next_bt"
         android:layout_alignParentStart="true"
         android:layout_gravity="left|bottom"
-        android:onClick="goto_IA"/>
+        />
 
     <Button
         android:layout_width="114dp"
         android:layout_height="75dp"
         android:id="@+id/add_finish_bt"
         android:text="Finish"
-        android:onClick="finishRPA"
+
         android:layout_weight="1"
         android:layout_alignTop="@+id/add_next_bt"
         android:layout_alignEnd="@+id/pager"

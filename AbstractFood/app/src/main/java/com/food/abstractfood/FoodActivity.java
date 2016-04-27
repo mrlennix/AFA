@@ -1,18 +1,27 @@
 package com.food.abstractfood;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+
+import java.util.ArrayList;
 
 
 public class FoodActivity extends AppCompatActivity {
@@ -26,7 +35,7 @@ public class FoodActivity extends AppCompatActivity {
     private Button stepview,listview,report;
     private ViewPager view;
     private ImageView happyImage, sadImage;
-
+    private ArrayList<Bitmap> map = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         food = (Food)getIntent().getSerializableExtra("selectedfood");
@@ -73,7 +82,6 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-        user.setUsername(food.getUsername());
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.loading);
         anim.setAnimationListener(new Animation.AnimationListener() {
@@ -84,7 +92,8 @@ public class FoodActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
+                user.setUsername(food.getUsername());
+                user =database.getUser(user);
                 report.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vws) {
@@ -119,9 +128,7 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-                viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
-                swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
-                viewPagerFood.setAdapter(swipeAdapterFoodPage);
+
 
 
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_LONG);
@@ -131,12 +138,21 @@ public class FoodActivity extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_SHORT).show();
 
+                food.decodeBase64();
+                if(food.getImage()!=null)map.add(food.getImage());
+                else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
+
+                viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
+                swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
+                viewPagerFood.setAdapter(swipeAdapterFoodPage);
 
                 //if(food.getImage()!=null)viewPagerFood.addView();
                 dateposted.setText(food.getDate());
                 username.setText(food.getUsername());
                 likes.setText(food.getLikes());
                 dislikes.setText(food.getDislikes());
+
+
                 if(user.getImage()!=null)image.setImageBitmap(user.getImage());
 
             }
@@ -147,8 +163,8 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onAnimationRepeat(Animation animation)
             {
-                user.setUsername(food.getUsername());
-              user =database.getUser(user);
+
+
             }
         });
         aniImage.startAnimation(anim);
@@ -158,6 +174,46 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
+
+
+
+    private class SwipeAdapterFoodPage extends PagerAdapter {
+
+        private Context context;
+        private LayoutInflater layoutInflater;
+
+        public SwipeAdapterFoodPage(Context ctx){
+            this.context=ctx;
+        }
+
+
+
+        @Override
+        public int getCount() {
+            return map.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return (view==(LinearLayout)object);
+        }
+
+        public Object instantiateItem(ViewGroup container, int position){
+            layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
+            ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
+            imageView.setImageBitmap(map.get(position));
+            container.addView(item_view);
+            return item_view;
+
+
+
+        }
+
+        public void destroyItem(ViewGroup container,int position,Object object){
+            container.removeView((LinearLayout)object);
+        }
+    }
 
 
 
