@@ -84,27 +84,29 @@
 </LinearLayout>
 
     <ImageButton
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginLeft="75dp"
         android:layout_marginRight="75dp"
         android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:clickable="true"
         android:id="@+id/upload_image"
         android:src="@drawable/uploadimagefoodbutton"
         android:onClick="getImage"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_above="@+id/editText12" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="ADD MAIN IMAGE"
+        android:textSize="10sp"
         android:id="@+id/textView11"
         android:textStyle="bold"
         android:layout_below="@+id/upload_image"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

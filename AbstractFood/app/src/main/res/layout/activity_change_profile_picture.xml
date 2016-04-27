@@ -21,12 +21,11 @@
         ></ImageView>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:id="@+id/username_text_view"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        ></TextView>
+        android:textSize="25dp"></TextView>
 
 
 </LinearLayout>

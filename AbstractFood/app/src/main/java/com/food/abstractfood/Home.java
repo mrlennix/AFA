@@ -22,6 +22,7 @@ public class Home extends AppCompatActivity {
          public void redirectDiscover(View view)
             {
                 Intent intent = new Intent(view.getContext(), DiscoverActivity.class);
+                user.encodeToBase64();
                 intent.putExtra("user",user);
                 startActivity(intent);
 
@@ -38,6 +39,8 @@ public class Home extends AppCompatActivity {
             {
 
                 Intent intent = new Intent(vws.getContext(), UploadActivity.class);
+                user.encodeToBase64();
+                intent.putExtra("user",user);
                 startActivity(intent);
 
             }

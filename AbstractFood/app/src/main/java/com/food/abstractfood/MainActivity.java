@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 if(s.toString().equals(""))return;
                 user.setUsername(s.toString());
                 user = database.getUser(user);
-                Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -255,6 +254,10 @@ public class MainActivity extends AppCompatActivity {
         System.err.println(user.getPassword());
         if(pass.getText().toString().equals(user.getPassword().toString()))
             home_page();
+        else
+        {
+            Toast.makeText(getBaseContext(),"Invalid Username of Password",Toast.LENGTH_LONG).show();
+        }
 
     }
 }

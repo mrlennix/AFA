@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -23,7 +24,8 @@ public class UploadActivity extends AppCompatActivity {
     private final int stupid =1;
     private Uri image;
     private DBmanager database;
-
+    private Bitmap imageBitmap=null;
+    private User user;
     private Food food = new Food();
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,24 +34,34 @@ public class UploadActivity extends AppCompatActivity {
         controller = new UploadController();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Upload");
         foodname = (EditText)findViewById(R.id.editText12) ;
         description = (EditText)findViewById(R.id.description_edit_text);
         imgbutton = (ImageButton)findViewById(R.id.upload_image);
         spinner = (Spinner)findViewById(R.id.spinner);
         database=new DBmanager();
+        user=(User)getIntent().getSerializableExtra("user");
+
 
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && requestCode == stupid)
         {
             image = data.getData();
+
+            try
+            {
+                imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),image);
+            } catch (IOException e) {}
             imgbutton.setImageURI(image);
 
         }
-        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     public void cancel (View v)
@@ -67,18 +79,16 @@ public class UploadActivity extends AppCompatActivity {
     public void ingred_adder(View v)
     {
         Intent next = new Intent(this,IngredientAdderActivity.class);
-        Bitmap map=null;
         food.setName(foodname.getText().toString());
         food.setDescription(description.getText().toString());
-        try
-        {
-            map = MediaStore.Images.Media.getBitmap(this.getContentResolver(),image);
-        }
-        catch (IOException e) {}
-        //food.setImage(map);
+        food.setImage(imageBitmap);
         food.setID(444444);
+        food.setUsername(user.getUsername());
+        food.setCategory(null);
+        food.setDate(null);
+        food.setIngredientscontained(null);
         next.putExtra("food",food);
-        database.putFood(food);
+        //database.putFood(food);
         startActivity(next);
 
     }
