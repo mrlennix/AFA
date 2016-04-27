@@ -52,6 +52,7 @@ public class DBmanager {
                     u.setSanswer(temp.getSanswer());
                     u.setSquestion(temp.getSquestion());
                     u.setImage(temp.getImage());
+                    if(temp.getCompressedImage()!=null)
                     u.setCompressedImage(temp.getCompressedImage());
                     u.decodeBase64();
                 } else {
@@ -143,25 +144,34 @@ public class DBmanager {
     }
 public Food getOneFood( Food foodselected)
 {
+    if(foodselected == null)return foodselected;
     f = foodselected;
+
     database.child(foodpath).addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            Food tempf = null;
-            for (DataSnapshot shot : dataSnapshot.getChildren()) {
-                tempf = shot.getValue(Food.class);
-                if (tempf.getName().equals(f.getName())) break;
+
+            for(DataSnapshot shot : dataSnapshot.getChildren())
+            {
+                Food temp = shot.getValue(Food.class);
+                System.err.println(shot.getChildrenCount());
+                if(temp==null)continue;
+                if(f.getName().equals(temp.getName()))
+                {
+                    f.setUsername(temp.getUsername());
+                    System.out.println(f.getUsername());
+                    f.setCompressedImage(temp.getCompressedImage());
+                    f.setDate(temp.getDate());
+                    f.setID(temp.getID());
+                    f.setLikes(temp.getLikes());
+                    f.setDislikes(temp.getDislikes());
+                    f.decodeBase64();
+
+                    break;
+                }
 
             }
-            if (tempf != null) {
-                f.setDescription(tempf.getDescription());
-                f.setDate(tempf.getDate());
-                f.setUsername(tempf.getUsername());
-                f.setCategory(tempf.getCategory());
-                f.setID(tempf.getID());
-                f.setCompressedImage(tempf.getCompressedImage());
-                f.decodeBase64();
-            }
+
         }
 
 
@@ -170,8 +180,11 @@ public Food getOneFood( Food foodselected)
 
         }
     });
-    return f;
 
+
+
+
+    return f;
 }
     public Firebase getDatabase() {
         return database;

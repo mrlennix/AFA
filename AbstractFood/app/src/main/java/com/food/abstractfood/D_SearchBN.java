@@ -11,11 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 import com.firebase.client.Firebase;
-import java.io.InterruptedIOException;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -34,6 +32,7 @@ public class D_SearchBN extends AppCompatActivity
     private ArrayList<String> listItems;
     private ArrayList<String> databaseFoods;
     private ArrayAdapter<String> adapter;
+    private ArrayList<Food> data;
     private ListView listView;
     private EditText editText;
     private String foodname;
@@ -41,17 +40,20 @@ public class D_SearchBN extends AppCompatActivity
     private Food foodselected;
     private  User user;
 
+
     protected void onCreate(Bundle savedInstanceState)
     {
         foodselected = new Food();
 
 
+
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         foodgrabber = new DBmanager();
-        databaseFoods = foodgrabber.getFoodNames();
 
+        databaseFoods = foodgrabber.getFoodNames();
         setContentView(R.layout.activity_searchbyname);
+
         listView=(ListView)findViewById(R.id.Flistview);
         editText=(EditText)findViewById(R.id.txtNsearch);
 
@@ -99,7 +101,6 @@ public class D_SearchBN extends AppCompatActivity
 
                 foodname  = (String) (parent.getItemAtPosition(position));
                 foodselected.setName(foodname);
-                foodselected= foodgrabber.getOneFood(foodselected);
                 Intent foodactivity = new Intent(view.getContext(),FoodActivity.class);
                 foodactivity.putExtra("selectedfood",foodselected);
                 foodactivity.putExtra("user",user);

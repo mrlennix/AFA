@@ -3,7 +3,8 @@
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +22,6 @@
             android:name=".FoodActivity"
             android:label="@string/food">
         </activity>
-
         <activity
             android:name=".Home"
             android:label="@string/Home">
@@ -42,11 +42,11 @@
             android:name=".D_SearchBN"
             android:label="@string/searchbyname">
         </activity>
-
-        <activity android:name=".FoodListViewActivity"
-            android:label="@string/list_view"></activity>
-
-        <activity android:name=".ReportActivity"
+        <activity
+            android:name=".FoodListViewActivity"
+            android:label="@string/list_view"/>
+        <activity
+            android:name=".ReportActivity"
             android:label="@string/Report">
         </activity>
         <activity
@@ -54,25 +54,23 @@
             android:label="@string/IngredientFinderTitle">
         </activity>
         <activity android:name=".ForgotUsernamePassword">
-
-
         </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
-                    android:value="@integer/google_play_services_version" />		 +            android:value="@integer/google_play_services_version"/>
-
-                <activity android:name=".UploadActivity" />
-                <activity
-                    android:name=".ChangePassword"
-                    android:label="@string/change_passowrd" />
-               <activity
-                  android:name=".IngredientAdderActivity"
-                   android:label="@string/title_activity_ingredient_adder"/>
-
-                <activity android:name=".AddRecipeActivity" />
-
+        android:value="@integer/google_play_services_version" /> +
+        android:value="@integer/google_play_services_version"/>
+        <activity android:name=".UploadActivity"/>
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/change_passowrd"/>
+        <activity
+            android:name=".IngredientAdderActivity"
+            android:label="@string/title_activity_ingredient_adder"/>
+        <activity android:name=".AddRecipeActivity"/>
+        <activity android:name=".LoadingActivity">
+        </activity>
     </application>
 
 </manifest>

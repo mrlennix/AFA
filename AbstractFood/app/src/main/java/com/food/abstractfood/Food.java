@@ -19,6 +19,8 @@ public class Food implements Serializable
     private String username;
     private String compressedImage;
     private Bitmap image;
+    private String likes ="0";
+    private String dislikes="0";
 
 
     public Food (){}
@@ -123,7 +125,7 @@ public class Food implements Serializable
     {
         if(image==null)return;
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOS);
+        image.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOS);
         compressedImage = Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
         image=null;
 
@@ -138,4 +140,19 @@ public class Food implements Serializable
     }
 
 
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
+    }
+
+    public String getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(String dislikes) {
+        this.dislikes = dislikes;
+    }
 }
