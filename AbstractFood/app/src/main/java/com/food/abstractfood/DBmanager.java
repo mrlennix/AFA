@@ -34,7 +34,7 @@ public class DBmanager {
 
         user.encodeToBase64();
         database.child(userpath).child(user.getUsername()).setValue(user);
-        user.decodeBase64();
+        //user.decodeBase64();
     }
 
     public User getUser(User user) {

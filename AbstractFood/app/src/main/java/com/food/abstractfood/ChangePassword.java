@@ -20,6 +20,7 @@ public class ChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         user = (User) getIntent().getSerializableExtra("user");
+        user.decodeBase64();
         database.getUser(user);
         //To fix the font of "hint"
          pass = (EditText) findViewById(R.id.passwordChangePS);

@@ -19,9 +19,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class ProfileActivity extends AppCompatActivity {
     private User user;
     private String compressed;
+    private String compressedNew;
     ViewPager viewPager;
     ViewPager viewPager2;
     SwipeAdapterMyUploads swipeAdapterMyUploads;
@@ -82,7 +85,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         TextView changeP = (TextView) findViewById(R.id.ChangePsText);
 
-        //Image source will be changed later on
 
         imageButton1=(ImageView) findViewById(R.id.profile_pic);
         imageButton1.setImageResource(R.mipmap.ic_launcher);
@@ -118,10 +120,20 @@ public class ProfileActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK && requestCode==select_image)
         {
             Uri selectedImage=data.getData();
-            imageButton1.setImageURI(selectedImage);
+            try
+            {
+                imageSelected = MediaStore.Images.Media.getBitmap(this.getContentResolver(),selectedImage);
+            } catch (IOException e) {}
+            imageButton1.setImageBitmap(imageSelected);
+            user.setImage(imageSelected);
+
         }
 
+        database.putUser(user);
     }
+
+
+
 
 
 
@@ -224,9 +236,8 @@ public class ProfileActivity extends AppCompatActivity {
     public void changePass(View v)
     {
         Intent specialIntent = new Intent(this, ChangePassword.class);
-        User u = new User();
-        u.setUsername(user.getUsername());
-        specialIntent.putExtra("user",u);
+        user.encodeToBase64();
+        specialIntent.putExtra("user",user);
         startActivity(specialIntent);
     }
 

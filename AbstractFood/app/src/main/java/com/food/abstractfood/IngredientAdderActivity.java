@@ -31,6 +31,8 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
     ArrayList<String> ingredientitems;
     ArrayAdapter<String> indataAdapter;
     ArrayList<String> ingredientsselected = new ArrayList<>();
+    String[] ingredientsList;
+    private Food food;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,10 +48,12 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
         setContentView(R.layout.activity_ingredientfinder);
         but = (Button)findViewById(R.id.igsearchbutton);
         but.setText("DONE");
+
         //ingredients=(LinearLayout)findViewById(R.id.layout_ingredient_plus_minus);
 
 
-
+        food=(Food)getIntent().getSerializableExtra("food");
+        food.decodeBase64();
 
         fromList = (Spinner)findViewById(R.id.fromList);
 
@@ -164,9 +168,12 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
 
 
                     }
+                    ingredientsList=new String[ingredientsselected.size()];
+                    ingredientsList=ingredientsselected.toArray(ingredientsList);
+                    food.setIngredientscontained(ingredientsList);
                     Intent next = new Intent(this,AddRecipeActivity.class);
-                    //next.putExtra();
-
+                    food.encodeToBase64();
+                    next.putExtra("food",food);
                     startActivity(next);
                 }
 
@@ -174,6 +181,9 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
                 // More buttons go here (if any) ...
 
         }
+
+
+
     }
 
 

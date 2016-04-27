@@ -198,16 +198,7 @@ public class SignupActivity extends AppCompatActivity {
         });
 
 
-        /*int i;
-        for(i=0;i<tempUsers.size();i++)
-        {
-            System.out.println(tempUsers.get(i).getUsername());
-            if(tempUsers.get(i).getUsername()==user.getUsername())
-            {
-                return 1;
-            }
-        }
-        return 0;*/
+
     }
 
 }
