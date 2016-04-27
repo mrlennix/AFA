@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Food food = new Food();
-        food.setName("Pancakes");
+        food.setName("Burger");
         food.setDate("04/26/2016");
         food.setCategory("Breakfast Food");
         food.setID(0000001);

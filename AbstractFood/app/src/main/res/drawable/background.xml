@@ -3,7 +3,7 @@
 <shape android:innerRadius="3dp"
        xmlns:android="http://schemas.android.com/apk/res/android">
 
-<solid android:color="#fff"/>
+<solid android:color="#ffffff"/>
 
     <corners android:bottomLeftRadius="@dimen/space_between"
              android:bottomRightRadius="@dimen/space_between"

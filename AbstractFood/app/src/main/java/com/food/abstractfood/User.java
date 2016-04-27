@@ -105,4 +105,5 @@ public class User implements Serializable
     public void setCompressedImage(String compressedImage) {
         this.compressedImage = compressedImage;
     }
+
 }

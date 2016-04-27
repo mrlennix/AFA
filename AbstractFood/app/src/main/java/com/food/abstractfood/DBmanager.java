@@ -117,7 +117,8 @@ public class DBmanager {
         return foods;
     }
 
-    public ArrayList<String> getFoodNames() {
+    public ArrayList<String> getFoodNames()
+    {
 
 
         database.child(foodpath).addValueEventListener(new ValueEventListener() {

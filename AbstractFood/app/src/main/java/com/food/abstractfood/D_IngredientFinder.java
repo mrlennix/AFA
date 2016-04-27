@@ -1,7 +1,9 @@
 package com.food.abstractfood;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 
 
@@ -23,6 +27,8 @@ public class D_IngredientFinder extends Activity implements OnClickListener
 
     Spinner fromList;
     ListView toList;
+    DBmanager foodmanager;
+    ArrayList <Food> foodtobesent;
     ArrayAdapter<String> outdataAdapter;
     ArrayList<String> ingredientitems;
     ArrayAdapter<String> indataAdapter;
@@ -34,8 +40,12 @@ public class D_IngredientFinder extends Activity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredientfinder);
+        Firebase.setAndroidContext(this);
+        foodmanager = new DBmanager();
+        foodtobesent = foodmanager.getFood();
 
 
+        ingredientsselected = new ArrayList<>();
         ingredientitems = getIntent().getStringArrayListExtra("ingredientitems");
 
 
@@ -112,13 +122,22 @@ public class D_IngredientFinder extends Activity implements OnClickListener
                 {
                     for( int i = 0 ; i< outdataAdapter.getCount(); i++ )
                     {
-                         ingredientsselected.add(outdataAdapter.getItem(i).toString());
-
+                        String tempingredient;
+                        tempingredient= outdataAdapter.getItem(i);
+                        ingredientsselected.add(tempingredient);
 
 
 
 
                     }
+
+                    Bundle foodbundle = new Bundle();
+                    foodbundle.putSerializable("food",foodtobesent);
+                    Intent next = new Intent(this, D_IFSearchAlg.class);
+                    next.putExtras(foodbundle);
+                    next.putStringArrayListExtra("selected", ingredientsselected);
+
+                    startActivity(next);
 
                 }
 

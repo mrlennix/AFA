@@ -25,7 +25,7 @@
 
     <!-- Testing PLEASE IGNORE BELOW  -->
 
-    <string name="IngredientFinderTitle">Ingredient Finder</string>
+    <string name="IngredientFinderTitle">   Search Results</string>
     <string name="IngredientFinderD">Add or Remove Ingredients.</string>
     <string name="IF_settings">Settings</string>
     <string name="IFactivity">IngredientFinderActivity</string>

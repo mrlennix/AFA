@@ -26,7 +26,7 @@ public class FoodListViewActivity extends AppCompatActivity {
         String[] myItems = {"step 1", "step 2", "step 3", "step 4", "step 5", "step 6", "step 7", "step 8", "step 9", "step 10"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.da_item, myItems);
 
-        ListView list = (ListView) findViewById(R.id.Food_listView);
+        ListView list = (ListView) findViewById(R.id.foodresults);
 
         list.setAdapter(adapter);
     }

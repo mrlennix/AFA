@@ -44,7 +44,7 @@
         android:text="List View"
         android:id="@+id/listViewBtn"
         android:layout_alignParentBottom="true"
-        android:background="#FF99CC00"
+
         android:layout_alignParentStart="true" />
 
     <Button
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Step View"
         android:id="@+id/button9"
-        android:background="#FF99CC00"
+
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:text="Report"
         android:id="@+id/reportBtn"
-        android:background="#FF99CC00"
+
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

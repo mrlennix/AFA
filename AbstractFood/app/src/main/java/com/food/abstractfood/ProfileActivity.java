@@ -67,8 +67,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i("MSG","picture clicked");
-                //Intent intent=new Intent(v.getContext(),ChangePassword.class);
-                //startActivityForResult(intent,0);
+                Intent intent=new Intent(v.getContext(),ChangePassword.class);
+                startActivityForResult(intent,0);
             }
         });
 

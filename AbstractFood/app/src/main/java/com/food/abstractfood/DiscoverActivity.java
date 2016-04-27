@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 /*This is the discover activity. where browse and search will
 be implemented. It includes features such as the tabbed layout and
@@ -20,6 +23,8 @@ public class DiscoverActivity extends AppCompatActivity
     private ViewPager viewpager;
     private ArrayList<String> ingredientitems;
     private User user;
+    private ArrayList<String> foodtobesent;
+    private DBmanager database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,12 +32,17 @@ public class DiscoverActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setTheme(R.style.NoActionBarTheme); //removing the default action bar
         setContentView(R.layout.activity_discover); // setting up layout
+        Firebase.setAndroidContext(this);
         user = (User)getIntent().getSerializableExtra("user");
+        database = new DBmanager();
+        foodtobesent = database.getFoodNames();
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar); //tool bar for tabs
         setSupportActionBar(toolbar); // this will be our new actionbar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
 
 
         viewpager = (ViewPager) findViewById(R.id.viewpager); // view pager for new fragments
@@ -59,6 +69,7 @@ public class DiscoverActivity extends AppCompatActivity
    {
        Intent searchbyname = new Intent(this, D_SearchBN.class);
        searchbyname.putExtra("user",user);
+       searchbyname.putStringArrayListExtra("foodnames",foodtobesent);
        startActivity(searchbyname);
 
 
