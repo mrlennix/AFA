@@ -35,7 +35,8 @@
     <item android:title="add res"
           android:id="@+id/menu_add_recipe"
         />
-
+    <item android:title="Splat"
+          android:id="@+id/splat"/>
 
 
 </menu>

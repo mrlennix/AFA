@@ -102,8 +102,9 @@ public class D_SearchBN extends AppCompatActivity
                 foodname  = (String) (parent.getItemAtPosition(position));
                 foodselected.setName(foodname);
                 Intent foodactivity = new Intent(view.getContext(),FoodActivity.class);
+
                 foodactivity.putExtra("selectedfood",foodselected);
-                foodactivity.putExtra("user",user);
+
                 startActivity(foodactivity);
 
 

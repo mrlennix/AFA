@@ -135,11 +135,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_add_recipe:add_res_page();return true;
             case R.id.menu_home:home_page();return true;
             case R.id.menu_listview:listview_page();return true;
+            case R.id.splat:splat();return true;
             default: return false;
 
         }
     }
+    private void splat()
+    {
+        Intent next = new Intent(this,LoadingActivity.class);
 
+        startActivity(next);
+    }
     private void signup_page()
     {
         Intent next = new Intent(this,SignupActivity.class);
