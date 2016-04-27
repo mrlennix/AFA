@@ -94,7 +94,7 @@ public class FoodActivity extends AppCompatActivity {
                     }
                 });
 
-                report.setOnClickListener(new View.OnClickListener() {
+                listview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
 
@@ -126,6 +126,8 @@ public class FoodActivity extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_LONG);
                 Button listViewBtn = (Button) findViewById(R.id.listViewBtn);
+
+
 
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_SHORT).show();
 

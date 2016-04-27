@@ -1,25 +1,91 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class Home extends AppCompatActivity {
-    private User user;
+    private User user= new User();
 
 
     protected void onCreate(Bundle savedInstanceState)
     {
         user = (User) getIntent().getSerializableExtra("user");
+        user.decodeBase64();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setCustomView(R.layout.activity_homeactionbar);
+        actionBar.setDisplayShowCustomEnabled(true);
+        ImageView profilePic;
+        TextView username;
+        username=(TextView)findViewById(R.id.username_home);
+        username.setText(user.getUsername());
+        profilePic=(ImageView) findViewById(R.id.home_pic);
+        profilePic.setImageBitmap(user.getImage());
     }
 
-         public void redirectDiscover(View view)
+    @Override
+    public boolean onCreateOptionsMenu(Menu home_menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu,home_menu);
+
+        return super.onCreateOptionsMenu(home_menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch(item.getItemId()) {
+            case R.id.home_menu_about:about_page();return true;
+            case R.id.home_menu_profile:profile_page();return true;
+            case R.id.home_menu_logout:logout_page();return true;
+            default: return super.onOptionsItemSelected(item);
+        }}
+
+    private void about_page()
+    {
+        Intent next = new Intent(this,AboutActivity.class);
+
+        startActivity(next);
+
+    }
+
+    private void profile_page()
+    {
+        Intent next = new Intent(this,ProfileActivity.class);
+        user.encodeToBase64();
+        next.putExtra("object",user);
+        startActivity(next);
+
+        startActivity(next);
+
+    }
+
+    private void logout_page()
+    {
+        Intent next = new Intent(this,MainActivity.class);
+
+        startActivity(next);
+
+    }
+
+
+
+
+            public void redirectDiscover(View view)
             {
                 Intent intent = new Intent(view.getContext(), DiscoverActivity.class);
                 user.encodeToBase64();

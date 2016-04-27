@@ -19,6 +19,7 @@
     <string name="title_activity_change_passsword">ChangePasssword</string>
     <string name="change_passowrd">Change Password</string>
     <string name="searchbyname">Search By Name</string>
+    <string name="logout">Log Out</string>
     <string name="list_view">Food List View</string>>
 
 

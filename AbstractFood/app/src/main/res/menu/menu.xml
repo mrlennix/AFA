@@ -6,6 +6,7 @@
     <item android:title="@string/food"
       android:id="@+id/menu_food"/>
 
+
     <item android:title="@string/profile"
           android:id="@+id/menu_profile"/>
 

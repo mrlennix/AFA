@@ -22,6 +22,12 @@
             android:name=".FoodActivity"
             android:label="@string/food">
         </activity>
+
+        <activity android:name=".AboutActivity"
+            android:label="About">
+
+        </activity>
+
         <activity
             android:name=".Home"
             android:label="@string/Home">

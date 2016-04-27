@@ -108,6 +108,8 @@ public class D_SearchBN extends AppCompatActivity
                 startActivity(foodactivity);
 
 
+                //this will send it the food activity!!!
+
 
             }
         });

@@ -85,7 +85,7 @@
         android:layout_width="112dp"
         android:layout_height="wrap_content"
         android:text="Cancel"
-        android:id="@+id/button6"
+        android:id="@+id/cancelBtn"
         android:layout_marginBottom="31dp"
         style="@style/all_button_colors"
         android:layout_alignParentBottom="true"
@@ -97,7 +97,7 @@
         android:text="Submit"
         android:id="@+id/button7"
         style="@style/all_button_colors"
-        android:layout_below="@+id/txtoutput"
+        android:layout_alignTop="@+id/cancelBtn"
         android:layout_alignEnd="@+id/txtoutput" />
 
 
@@ -107,7 +107,7 @@
         android:text=" "
         android:id="@+id/txtoutput"
         android:background="#FFF"
-        android:layout_above="@+id/button6"
+        android:layout_above="@+id/cancelBtn"
         android:layout_centerHorizontal="true" />
 
 
