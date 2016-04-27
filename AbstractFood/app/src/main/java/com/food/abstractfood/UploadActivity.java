@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
@@ -65,7 +66,7 @@ public class UploadActivity extends AppCompatActivity {
         user.decodeBase64();
         categoryList = new String[]{"Breakfast Food", "Dessert", "Appetizers", "Soup", "Sea Food", "Other", "Vegetarian", "Vegan"};
         Arrays.sort(categoryList);
-
+        description.setGravity(Gravity.TOP);
 
         indataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categoryList);
         indataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,7 +108,8 @@ public class UploadActivity extends AppCompatActivity {
 
     }
 
-    public void cancel(View v) {
+    public void cancel (View v)
+    {
 
         finish();
 

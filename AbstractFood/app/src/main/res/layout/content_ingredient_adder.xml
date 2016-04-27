@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="Skip"
             android:layout_weight="1"
-            style="@style/all_button_colors"
+
             android:layout_marginRight="@dimen/space_between"
 
             />
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Recipe"
-            style="@style/all_button_colors"
+
             android:layout_weight="1"
             />
 

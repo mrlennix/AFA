@@ -50,6 +50,9 @@
             android:label="@string/Report">
         </activity>
         <activity
+            android:name=".D_IFSearchAlg"
+            android:label="@string/IngredientFinderTitle"/>
+        <activity
             android:name=".D_IngredientFinder"
             android:label="@string/IngredientFinderTitle">
         </activity>

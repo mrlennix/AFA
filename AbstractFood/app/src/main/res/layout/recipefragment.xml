@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <Button
+        android:layout_width="112dp"
+        android:layout_height="74dp"
+        android:id="@+id/add_cancel_bt"
+        android:text="Back to Ingredient Adder"
+        android:layout_weight="1"
+        android:layout_alignTop="@+id/add_next_bt"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|bottom"
+        android:onClick="goto_IA"/>
+
+    <Button
+        android:layout_width="114dp"
+        android:layout_height="75dp"
+        android:id="@+id/add_finish_bt"
+        android:text="Finish"
+        android:onClick="finishRPA"
+        android:layout_weight="1"
+        android:layout_alignTop="@+id/add_next_bt"
+        android:layout_alignEnd="@+id/pager"
+        android:layout_gravity="right|bottom" />
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="210dp"
+
+        android:maxEms="100"
+        android:id="@+id/ingredientdescriptionedit"
+        android:background="@drawable/background"
+        android:minHeight="100dp"
+
+        android:layout_below="@+id/stepchanger"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal|top"
+        android:text=" " />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:textSize="20dp"
+        android:id="@+id/stepchanger"
+        android:layout_marginTop="20dp"
+        android:text="Step 1:"
+        android:layout_gravity="center_horizontal|top" />
+
+
+</FrameLayout>

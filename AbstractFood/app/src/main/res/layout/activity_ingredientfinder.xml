@@ -20,21 +20,22 @@
 
     </Spinner>
 
-    <Button android:id="@+id/add" android:layout_width="wrap_content"
+    <Button android:id="@+id/add"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add"
-        style="@style/all_button_colors"
+
         android:padding ="10dp"
         android:layout_marginLeft="18dp"
         android:layout_below="@+id/fromList"
-        android:layout_toStartOf="@+id/igsearchbutton" />
+        android:layout_toStartOf="@+id/remove" />
 
     <Button android:id="@+id/remove" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="18dp"
         android:text="@string/remove"
         android:padding ="5dp"
-        style="@style/all_button_colors"
+
         android:layout_alignTop="@+id/add"
         android:layout_alignStart="@+id/igsearchbutton"
         android:layout_marginStart="51dp" />
@@ -63,7 +64,7 @@
         android:id="@+id/igsearchbutton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        style="@style/all_button_colors"
+
         />
 
 
