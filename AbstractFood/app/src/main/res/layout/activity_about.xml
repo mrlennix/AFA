@@ -3,51 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView344"
+        android:src="@drawable/logo"
+        android:alpha=".25"
 
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="- Lacherois Boussou"
+        android:text="Lacherois Boussou"
         android:id="@+id/textView14"
         android:layout_gravity="center_vertical"
         android:layout_below="@+id/textView15"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="- Mistere Abate"
+        android:text="Mistere Abate"
+
         android:id="@+id/textView15"
         android:layout_gravity="bottom"
+        android:layout_marginTop="76dp"
         android:layout_below="@+id/textView9"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Abstract food is an Android application developed by   "
+        android:text="Abstract Foods v1.0a1"
+        android:layout_marginTop="121dp"
         android:id="@+id/textView9"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="- Emmanuel Lennix"
+        android:text="Emmanuel Lennix"
         android:id="@+id/textView16"
         android:layout_below="@+id/textView14"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="- Alex Limon"
+        android:text="Alex Limón"
         android:id="@+id/textView17"
         android:layout_below="@+id/textView16"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

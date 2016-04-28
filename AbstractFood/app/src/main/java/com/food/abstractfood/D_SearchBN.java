@@ -48,10 +48,7 @@ public class D_SearchBN extends AppCompatActivity
 
 
         super.onCreate(savedInstanceState);
-        /* this will fix the bug for search by name!
-        foodgrabber = new DBmanager();
-        databaseFoods = foodgrabber.getFoodNames();
-         */
+
         databaseFoods = getIntent().getStringArrayListExtra("foodnames");
         setContentView(R.layout.activity_searchbyname);
 

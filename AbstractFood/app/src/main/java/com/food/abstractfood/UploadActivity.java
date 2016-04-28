@@ -136,6 +136,8 @@ public class UploadActivity extends AppCompatActivity {
         database.putFood(food);
         next.putExtra("food", food);
         startActivity(next);
+        finish();
+
 
     }
 

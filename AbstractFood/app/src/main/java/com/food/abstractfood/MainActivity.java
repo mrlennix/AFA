@@ -3,6 +3,7 @@ package com.food.abstractfood;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         super.onCreate(savedInstanceState);
+
         user = new User();
 
         controller = new LoginController();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         username = (EditText)findViewById(R.id.editText);
 
@@ -225,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
     public void signup(View v)
     {
         Intent signup =new Intent(this,SignupActivity.class);
-        startActivityForResult(signup,0);
+        startActivityForResult(signup, 0);
     }
 
     public void signin(View v)

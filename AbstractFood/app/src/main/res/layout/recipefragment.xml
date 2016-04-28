@@ -19,6 +19,7 @@
         android:layout_height="75dp"
         android:id="@+id/add_finish_bt"
         android:text="Finish"
+        android:clickable="true"
 
         android:layout_weight="1"
         android:layout_alignTop="@+id/add_next_bt"

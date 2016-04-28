@@ -178,6 +178,7 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
                     db.putFood(food);
                     next.putExtra("food",food);
                     startActivity(next);
+                    finish();
                 }
 
 

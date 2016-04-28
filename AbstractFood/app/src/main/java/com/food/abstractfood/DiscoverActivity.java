@@ -15,6 +15,7 @@ import com.firebase.client.Firebase;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /*This is the discover activity. where browse and search will
@@ -26,10 +27,12 @@ public class DiscoverActivity extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewpager;
+    private ArrayList <Food> allfoods;
     private ArrayList<String> ingredientitems;
     private User user;
     private ArrayList<String> foodtobesent;
     private DBmanager database;
+    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,7 +44,7 @@ public class DiscoverActivity extends AppCompatActivity
         user = (User)getIntent().getSerializableExtra("user");
         database = new DBmanager();
         foodtobesent = database.getFoodNames();
-
+        allfoods = database.getFood();
         try {
             this.loadIngredients();
         } catch (IOException e) {
@@ -114,6 +117,23 @@ public class DiscoverActivity extends AppCompatActivity
             i++;
 
         }
+
+
+    }
+    public void redirectRandomize(View v){
+        int min = 0;
+        int max = allfoods.size()-1;
+        int randomindex;
+        random = new Random();
+        randomindex= random.nextInt(max - min + 1) + min;
+        Intent random = new Intent(this , FoodActivity.class);
+        random.putExtra("selectedfood", allfoods.get(randomindex));
+        startActivity(random);
+
+
+
+
+
 
 
     }
