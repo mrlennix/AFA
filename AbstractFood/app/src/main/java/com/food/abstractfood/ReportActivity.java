@@ -35,7 +35,7 @@ EditText reportcomments;
         });
 
 
-        Button submitBtn = (Button) findViewById(R.id.button7);
+        Button submitBtn = (Button) findViewById(R.id.submitBtn);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
 

@@ -1,8 +1,11 @@
 package com.food.abstractfood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.food.abstractfood.R;
@@ -19,6 +22,14 @@ public class FoodListViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_foodlistviewz);
         populateListview();
 
+
+        Button cancelif = (Button) findViewById(R.id.cancelif);
+        cancelif.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void populateListview() {
