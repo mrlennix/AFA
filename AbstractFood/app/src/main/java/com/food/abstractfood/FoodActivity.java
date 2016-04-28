@@ -136,8 +136,6 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-                Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_SHORT).show();
-
                 food.decodeBase64();
                 if(food.getImage()!=null)map.add(food.getImage());
                 else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
