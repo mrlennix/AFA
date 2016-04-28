@@ -19,7 +19,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     private User user;
@@ -34,14 +37,18 @@ public class ProfileActivity extends AppCompatActivity {
     ImageButton imageButton;
     final int select_image=1;
     private DBmanager database;
-
+    private int[] image_res={R.drawable.plate};
+    private ArrayList<Food> food;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Firebase.setAndroidContext(this);
         database = new DBmanager();
         user = (User)getIntent().getSerializableExtra("object");
+        food = (ArrayList<Food>) getIntent().getSerializableExtra("food");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         compressed = user.getCompressedImage();
@@ -57,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         viewPager2 = (ViewPager) findViewById(R.id.view_pager2);
         swipeAdapterMyUploads = new SwipeAdapterMyUploads(this);
+        swipeAdapterMyUploads.setImage_res(new int[]{R.drawable.pancake, R.drawable.burgerimage});
         swipeAdapterMyFavorites = new SwipeAdapterMyFavorites(this);
         viewPager.setAdapter(swipeAdapterMyUploads);
         viewPager2.setAdapter(swipeAdapterMyFavorites);
@@ -90,6 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         imageButton1.setImageResource(R.mipmap.ic_launcher);
         if(user.getImage()!=null)imageButton1.setImageBitmap(user.getImage());
         imageButton1.setBackgroundResource(R.drawable.round_background);
+
 
 
     }
@@ -143,7 +152,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private class SwipeAdapterMyFavorites extends PagerAdapter {
-        private int[] image_res={R.drawable.upload,R.drawable.plate};
+
         private Context context;
         private LayoutInflater layoutInflater;
 
@@ -171,15 +180,15 @@ public class ProfileActivity extends AppCompatActivity {
             View item_view=layoutInflater.inflate(R.layout.swipe_layout,container,false);
             imageButton= (ImageButton)item_view.findViewById(R.id.image_button_swipe);
             imageButton.setImageResource(image_res[position]);
-            imageButton.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    Intent next = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(next);
-                }
-            });
+//            imageButton.setOnClickListener(new View.OnClickListener()
+//            {
+//                @Override
+//                public void onClick(View v)
+//                {
+//                    Intent next = new Intent(getApplicationContext(),MainActivity.class);
+//                    startActivity(next);
+//                }
+//            });
             container.addView(item_view);
             return item_view;
         }
@@ -212,9 +221,13 @@ public class ProfileActivity extends AppCompatActivity {
         public boolean isViewFromObject(View view, Object object) {
             return (view==(LinearLayout)object);
         }
+        public void setImage_res (int[] res)
+        {
+            this.image_res=res;
+        }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
             layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View item_view=layoutInflater.inflate(R.layout.swipe_layout,container,false);
             ImageButton imageButton= (ImageButton) item_view.findViewById(R.id.image_button_swipe);
@@ -222,7 +235,9 @@ public class ProfileActivity extends AppCompatActivity {
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent next = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent next = new Intent(getApplicationContext(),FoodActivity.class);
+
+                    next.putExtra("selectedfood",food.get(position));
                     startActivity(next);
                 }
             });

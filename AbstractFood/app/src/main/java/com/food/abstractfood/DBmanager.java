@@ -162,6 +162,7 @@ public Food getOneFood( Food foodselected)
                     f.setUsername(temp.getUsername());
                     System.out.println(f.getUsername());
                     f.setCompressedImage(temp.getCompressedImage());
+                    f.setDescription(temp.getDescription());
                     f.setDate(temp.getDate());
                     f.setID(temp.getID());
                     f.setLikes(temp.getLikes());
@@ -187,6 +188,36 @@ public Food getOneFood( Food foodselected)
 
     return f;
 }
+
+    public ArrayList<Food> getUsersFood(final User user)
+    {
+        final ArrayList<Food> foods = new ArrayList<>();
+
+        database.child(foodpath).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot shot : dataSnapshot.getChildren())
+                {
+                    if(shot.getValue(Food.class).getUsername().equals(user.getUsername()))
+                    {
+                        foods.add(shot.getValue(Food.class));
+                        System.err.println(shot.getValue(Food.class).getName());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        return foods;
+
+    }
+
+
+
     public Firebase getDatabase() {
         return database;
     }

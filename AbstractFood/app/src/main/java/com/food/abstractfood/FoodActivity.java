@@ -28,7 +28,7 @@ public class FoodActivity extends AppCompatActivity {
     private User user = new User();
     ViewPager viewPagerFood;
     SwipeAdapterFoodPage swipeAdapterFoodPage;
-    private TextView username,dateposted,likes,dislikes,randomTextbox;
+    private TextView username,dateposted,likes,dislikes, discriptionTextView;
     private ImageView image,aniImage;
     private Button stepview,listview,report;
     private ViewPager view;
@@ -46,6 +46,7 @@ public class FoodActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
+        getSupportActionBar().setTitle(food.getName());
 
 
         aniImage = (ImageView)findViewById(R.id.aniImage);
@@ -60,9 +61,9 @@ public class FoodActivity extends AppCompatActivity {
         stepview = (Button)findViewById(R.id.button9);
         happyImage=(ImageView)findViewById(R.id.imageView4);
         sadImage = (ImageView)findViewById(R.id.imageView5);
-        randomTextbox = (TextView)findViewById(R.id.textView8);
+        discriptionTextView = (TextView)findViewById(R.id.textView8);
 
-        randomTextbox.setVisibility(View.INVISIBLE);
+        discriptionTextView.setVisibility(View.INVISIBLE);
         listview.setVisibility(View.INVISIBLE);
         report.setVisibility(View.INVISIBLE);
         stepview.setVisibility(Button.INVISIBLE);
@@ -109,7 +110,7 @@ public class FoodActivity extends AppCompatActivity {
                         startActivityForResult(intent, 0);
                     }
                 });
-                randomTextbox.setVisibility(View.VISIBLE);
+                discriptionTextView.setVisibility(View.VISIBLE);
                 aniImage.setVisibility(View.INVISIBLE);
                 listview.setVisibility(View.VISIBLE);
                 report.setVisibility(View.VISIBLE);
@@ -134,7 +135,6 @@ public class FoodActivity extends AppCompatActivity {
 
 
 
-                Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_SHORT).show();
 
                 //food.decodeBase64();
 //                if(food.getImage()!=null)map.add(food.getImage());
@@ -152,12 +152,13 @@ public class FoodActivity extends AppCompatActivity {
                 swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
                 viewPagerFood.setAdapter(swipeAdapterFoodPage);
 
+
                 //if(food.getImage()!=null)viewPagerFood.addView();
                 dateposted.setText(food.getDate());
                 username.setText(food.getUsername());
                 likes.setText(food.getLikes());
                 dislikes.setText(food.getDislikes());
-
+                discriptionTextView.setText(food.getDescription());
 
                 if(user.getImage()!=null)image.setImageBitmap(user.getImage());
 

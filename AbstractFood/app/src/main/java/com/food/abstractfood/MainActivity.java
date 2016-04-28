@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,35 +89,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu)
+//    {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu,menu);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-
-        switch(item.getItemId())
-        {
-            case R.id.menu_food:food_page();return true;
-            case R.id.menu_profile:profile_page();return true;
-            case R.id.menu_discover:discover_page();return true;
-            case R.id.menu_signup:signup_page();return true;
-            case R.id.menu_update:update_page();return true;
-            case R.id.menu_report:report_page();return true;
-            case R.id.menu_add_recipe:add_res_page();return true;
-            case R.id.menu_home:home_page();return true;
-            case R.id.menu_listview:listview_page();return true;
-            case R.id.splat:splat();return true;
-            default: return false;
-
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item)
+//    {
+//
+//        switch(item.getItemId())
+//        {
+//            case R.id.menu_food:food_page();return true;
+//            case R.id.menu_profile:profile_page();return true;
+//            case R.id.menu_discover:discover_page();return true;
+//            case R.id.menu_signup:signup_page();return true;
+//            case R.id.menu_update:update_page();return true;
+//            case R.id.menu_report:report_page();return true;
+//            case R.id.menu_add_recipe:add_res_page();return true;
+//            case R.id.menu_home:home_page();return true;
+//            case R.id.menu_listview:listview_page();return true;
+//            case R.id.splat:splat();return true;
+//            default: return false;
+//
+//        }
+//    }
     private void splat()
     {
         Intent next = new Intent(this,LoadingActivity.class);

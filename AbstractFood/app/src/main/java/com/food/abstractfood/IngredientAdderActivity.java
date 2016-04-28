@@ -33,6 +33,7 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
     ArrayList<String> ingredientsselected = new ArrayList<>();
     String[] ingredientsList;
     private Food food;
+    private DBmanager db = new DBmanager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -173,6 +174,8 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
                     food.setIngredientscontained(ingredientsList);
                     Intent next = new Intent(this,AddRecipeActivity.class);
                     food.encodeToBase64();
+
+                    db.putFood(food);
                     next.putExtra("food",food);
                     startActivity(next);
                 }

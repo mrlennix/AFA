@@ -8,9 +8,6 @@ import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.support.v7.widget.RecyclerView;
-import android.text.format.DateFormat;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.firebase.client.Firebase;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -27,6 +23,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Random;
 
 public class UploadActivity extends AppCompatActivity {
     private UploadController controller;
@@ -121,18 +118,22 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     public void ingred_adder(View v) {
+
+        int x = new Random().nextInt();
+        if(x<0)x=-1*x;
         Intent next = new Intent(this, IngredientAdderActivity.class);
         SimpleDateFormat DateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = new Date();
         food.setName(foodname.getText().toString());
         food.setDescription(description.getText().toString());
         food.setImage(imageBitmap);
-        food.setID(444444);
+        food.setID(x);
         food.setUsername(user.getUsername());
         food.setCategory(selectedCategory);
         food.setDate(DateFormat.format(date));
         food.setIngredientscontained(null);
         food.encodeToBase64();
+        database.putFood(food);
         next.putExtra("food", food);
         startActivity(next);
 
