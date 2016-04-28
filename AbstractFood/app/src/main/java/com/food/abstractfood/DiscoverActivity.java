@@ -1,6 +1,7 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -11,7 +12,11 @@ import android.view.View;
 
 import com.firebase.client.Firebase;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 /*This is the discover activity. where browse and search will
 be implemented. It includes features such as the tabbed layout and
 ability to redirect the user from a few buttons
@@ -37,7 +42,11 @@ public class DiscoverActivity extends AppCompatActivity
         database = new DBmanager();
         foodtobesent = database.getFoodNames();
 
-
+        try {
+            this.loadIngredients();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         toolbar = (Toolbar) findViewById(R.id.toolbar); //tool bar for tabs
         setSupportActionBar(toolbar); // this will be our new actionbar
         ActionBar actionBar = getSupportActionBar();
@@ -78,13 +87,36 @@ public class DiscoverActivity extends AppCompatActivity
     public void redirectIF(View v)
     {
 
-        ingredientitems = getIntent().getStringArrayListExtra("ingredientitems");
+        //ingredientitems = getIntent().getStringArrayListExtra("ingredientitems");
         Intent ingredientfinder = new Intent(this, D_IngredientFinder.class);
         ingredientfinder.putStringArrayListExtra("ingredientitems",ingredientitems);
         startActivity(ingredientfinder);
 
     }
 
+    public void loadIngredients() throws IOException
+    {
+        int i = 0;
+
+
+        AssetManager am = getBaseContext().getAssets();
+        InputStream ingredienttxt = am.open("Ingredients.txt");
+        String tempingredient = "";
+        ingredientitems = new ArrayList<>();
+
+        Scanner lineinput = new Scanner(ingredienttxt);
+
+        while (lineinput.hasNextLine())
+        {
+
+            tempingredient = lineinput.nextLine();
+            ingredientitems.add(i,tempingredient);
+            i++;
+
+        }
+
+
+    }
 
 }
 

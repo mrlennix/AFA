@@ -103,7 +103,9 @@ public class SignupActivity extends AppCompatActivity {
             imageUri=data.getData();
             try
             {
+                int size = 100;
                 imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),imageUri);
+                imageBitmap = Bitmap.createScaledBitmap(imageBitmap,size,size,true);
             } catch (IOException e) {}
             addImage.setImageURI(imageUri);
         }

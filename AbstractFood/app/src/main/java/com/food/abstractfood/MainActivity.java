@@ -1,9 +1,6 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +17,7 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 //MainActivity GUI
 //This class controls all GUI for the Home Page
@@ -77,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
         pass = (EditText)findViewById(R.id.passwordLogin);
         //Don't need these at login
          // set the app to start at the login
-        try {
-            loadIngredients();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            loadIngredients();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         //To fix the font of "hint"
         EditText passwordField=(EditText)findViewById(R.id.passwordLogin);
@@ -149,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     private void discover_page()
     {
         Intent next = new Intent(this, DiscoverActivity.class);
-        next.putStringArrayListExtra("ingredientitems", ingredientitems);
+        //next.putStringArrayListExtra("ingredientitems", ingredientitems);
         startActivity(next);
     }
 
@@ -201,29 +195,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void loadIngredients() throws IOException
-    {
-        int i = 0;
-
-
-        AssetManager am = getBaseContext().getAssets();
-        InputStream ingredienttxt = am.open("Ingredients.txt");
-        String tempingredient = "";
-        ingredientitems = new ArrayList<>();
-
-        Scanner lineinput = new Scanner(ingredienttxt);
-
-        while (lineinput.hasNextLine())
-        {
-
-            tempingredient = lineinput.nextLine();
-            ingredientitems.add(i,tempingredient);
-            i++;
-
-        }
-
-
-    }
+//    public void loadIngredients() throws IOException
+//    {
+//        int i = 0;
+//
+//
+//        AssetManager am = getBaseContext().getAssets();
+//        InputStream ingredienttxt = am.open("Ingredients.txt");
+//        String tempingredient = "";
+//        ingredientitems = new ArrayList<>();
+//
+//        Scanner lineinput = new Scanner(ingredienttxt);
+//
+//        while (lineinput.hasNextLine())
+//        {
+//
+//            tempingredient = lineinput.nextLine();
+//            ingredientitems.add(i,tempingredient);
+//            i++;
+//
+//        }
+//
+//
+//    }
     public void forgotname(View v)
     {
         Intent forgotUN = new Intent(this,ForgotUsernamePassword.class);

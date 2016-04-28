@@ -122,7 +122,10 @@ public class ProfileActivity extends AppCompatActivity {
             Uri selectedImage=data.getData();
             try
             {
+                int size = 100;
                 imageSelected = MediaStore.Images.Media.getBitmap(this.getContentResolver(),selectedImage);
+                imageSelected = Bitmap.createScaledBitmap(imageSelected,size,size,true);
+
             } catch (IOException e) {}
             imageButton1.setImageBitmap(imageSelected);
             user.setImage(imageSelected);

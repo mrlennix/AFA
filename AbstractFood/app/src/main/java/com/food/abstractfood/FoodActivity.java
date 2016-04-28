@@ -2,8 +2,6 @@ package com.food.abstractfood;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -35,7 +33,7 @@ public class FoodActivity extends AppCompatActivity {
     private Button stepview,listview,report;
     private ViewPager view;
     private ImageView happyImage, sadImage;
-    private ArrayList<Bitmap> map = new ArrayList<>();
+    private ArrayList<Integer> map = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         food = (Food)getIntent().getSerializableExtra("selectedfood");
@@ -138,9 +136,17 @@ public class FoodActivity extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_SHORT).show();
 
-                food.decodeBase64();
-                if(food.getImage()!=null)map.add(food.getImage());
-                else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
+                //food.decodeBase64();
+//                if(food.getImage()!=null)map.add(food.getImage());
+//                else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
+                if(food.getName().equals("Pancakes"))
+                {
+                map.add(R.drawable.pancake);
+                }
+                else if(food.getName().equals("Burger"))
+                {
+                    map.add(R.drawable.burgerimage);
+                }
 
                 viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
                 swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
@@ -202,7 +208,8 @@ public class FoodActivity extends AppCompatActivity {
             layoutInflater=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
             ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
-            imageView.setImageBitmap(map.get(position));
+            //imageView.setImageBitmap(map.get(position));
+            imageView.setImageResource(map.get(position ));
             container.addView(item_view);
             return item_view;
 
