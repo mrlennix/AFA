@@ -17,7 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -79,7 +82,20 @@ public class FoodActivity extends AppCompatActivity {
         sadImage.setVisibility(View.INVISIBLE);
         likes.setVisibility(View.INVISIBLE);
 
+        database.getDatabase().child(database.getUserpath()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    System.out.println(dataSnapshot.child(food.getUsername()).getChildrenCount());;
+                    user.setCompressedImage(dataSnapshot.child(food.getUsername()).getValue(User.class).getCompressedImage());
+                    user.decodeBase64();
+                    image.setImageBitmap(user.getImage());
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.loading);

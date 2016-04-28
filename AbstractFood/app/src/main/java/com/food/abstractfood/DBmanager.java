@@ -25,22 +25,30 @@ public class DBmanager {
 
     }
 
+    public static String getFoodpath() {
+        return foodpath;
+    }
+
+    public static String getUserpath() {
+        return userpath;
+    }
+
     public void putFood(Food food) {
         food.encodeToBase64();
-        database.child(foodpath).child(String.valueOf(food.getID())).setValue(food);
+        database.child(getFoodpath()).child(String.valueOf(food.getID())).setValue(food);
     }
 
     public void putUser(User user) {
 
         user.encodeToBase64();
-        database.child(userpath).child(user.getUsername()).setValue(user);
+        database.child(getUserpath()).child(user.getUsername()).setValue(user);
         //user.decodeBase64();
     }
 
     public User getUser(User user) {
         u = user;
         System.err.println(user.getUsername());
-        database.child(userpath).addValueEventListener(new ValueEventListener() {
+        database.child(getUserpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -77,7 +85,7 @@ public class DBmanager {
     public ArrayList<User> getUsers() {
         final ArrayList<User> users = new ArrayList<>();
 
-        database.child(userpath).addValueEventListener(new ValueEventListener() {
+        database.child(getUserpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
@@ -98,7 +106,7 @@ public class DBmanager {
     public ArrayList<Food> getFood() {
         final ArrayList<Food> foods = new ArrayList<>();
 
-        database.child(foodpath).addValueEventListener(new ValueEventListener() {
+        database.child(getFoodpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
@@ -121,7 +129,7 @@ public class DBmanager {
     {
 
 
-        database.child(foodpath).addValueEventListener(new ValueEventListener() {
+        database.child(getFoodpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String tempfoodname;
@@ -148,7 +156,7 @@ public Food getOneFood( Food foodselected)
     if(foodselected == null)return foodselected;
     f = foodselected;
 
-    database.child(foodpath).addValueEventListener(new ValueEventListener() {
+    database.child(getFoodpath()).addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -193,7 +201,7 @@ public Food getOneFood( Food foodselected)
     {
         final ArrayList<Food> foods = new ArrayList<>();
 
-        database.child(foodpath).addValueEventListener(new ValueEventListener() {
+        database.child(getFoodpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -225,4 +233,7 @@ public Food getOneFood( Food foodselected)
     public void setDatabase(Firebase database) {
         this.database = database;
     }
+
+
+
 }
