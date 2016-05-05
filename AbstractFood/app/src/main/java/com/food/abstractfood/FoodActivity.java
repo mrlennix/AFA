@@ -2,6 +2,8 @@ package com.food.abstractfood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -36,7 +38,7 @@ public class FoodActivity extends AppCompatActivity {
     private Button stepview,listview,report;
     private ViewPager view;
     private ImageView happyImage, sadImage;
-    private ArrayList<Integer> map = new ArrayList<>();
+    private ArrayList<Bitmap> map = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         food = (Food)getIntent().getSerializableExtra("selectedfood");
@@ -46,6 +48,35 @@ public class FoodActivity extends AppCompatActivity {
 
         database = new DBmanager();
         food = database.getOneFood(food);
+
+
+        database.getDatabase().child("image").child(food.getName()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot shot : dataSnapshot.getChildren())
+
+                {
+                    FoodImage temp = shot.getValue(FoodImage.class);
+                    if (temp.getCompressedImage() != null) {
+                        temp.decodeBase64();
+                        map.add(temp.getImage());
+
+                    }
+                }
+                if(map.isEmpty())map.add(BitmapFactory.decodeResource(getResources(),R.drawable.puker));
+                viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
+                swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
+                viewPagerFood.setAdapter(swipeAdapterFoodPage);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
@@ -108,7 +139,7 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 user.setUsername(food.getUsername());
-                user =database.getUser(user);
+                //user =database.getUser(user);
                 report.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vws) {
@@ -155,18 +186,16 @@ public class FoodActivity extends AppCompatActivity {
                 //food.decodeBase64();
 //                if(food.getImage()!=null)map.add(food.getImage());
 //                else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
-                if(food.getName().equals("Pancakes"))
-                {
-                map.add(R.drawable.pancake);
-                }
-                else if(food.getName().equals("Burger"))
-                {
-                    map.add(R.drawable.burgerimage);
-                }
+//                if(food.getName().equals("Pancakes"))
+//                {
+//                map.add(R.drawable.pancake);
+//                }
+//                else if(food.getName().equals("Burger"))
+//                {
+//                    map.add(R.drawable.burgerimage);
+//                }
 
-                viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
-                swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
-                viewPagerFood.setAdapter(swipeAdapterFoodPage);
+
 
 
                 //if(food.getImage()!=null)viewPagerFood.addView();
@@ -175,8 +204,23 @@ public class FoodActivity extends AppCompatActivity {
                 likes.setText(food.getLikes());
                 dislikes.setText(food.getDislikes());
                 discriptionTextView.setText(food.getDescription());
+                if(food.getUsername()!=null)
+                database.getDatabase().child("user").child(food.getUsername()).addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        User temp = dataSnapshot.getValue(User.class);
+                        if(temp.getImage()!=null)image.setImageBitmap(temp.getImage());
 
-                if(user.getImage()!=null)image.setImageBitmap(user.getImage());
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
 
             }
 
@@ -226,7 +270,7 @@ public class FoodActivity extends AppCompatActivity {
             View item_view=layoutInflater.inflate(R.layout.food_page_swipe_layout,container,false);
             ImageView imageView=(ImageView)item_view.findViewById(R.id.food_image_view);
             //imageView.setImageBitmap(map.get(position));
-            imageView.setImageResource(map.get(position ));
+            imageView.setImageBitmap(map.get(position ));
             container.addView(item_view);
             return item_view;
 
@@ -239,6 +283,16 @@ public class FoodActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        System.out.println("Finished!");
 
+        for(int x =0;x<map.size();x++)
+            map.get(x).recycle();
+            
 
+        super.onDestroy();
+        System.gc();
+        finish();
+    }
 }
