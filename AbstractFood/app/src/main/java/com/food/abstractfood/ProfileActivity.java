@@ -81,19 +81,9 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-        //Text source will be changed later on
         TextView username=(TextView)findViewById(R.id.username_text_view);
         username.setText(user.getUsername());
-
-
-
         TextView changeP = (TextView) findViewById(R.id.ChangePsText);
-
-
         imageButton1=(ImageView) findViewById(R.id.profile_pic);
         imageButton1.setImageResource(R.mipmap.ic_launcher);
         if(user.getImage()!=null)imageButton1.setImageBitmap(user.getImage());
@@ -103,12 +93,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
     //when the profile picture is clicked
-    public void ButtonClickListener(View v) {
+    public void ButtonClickListener(View v)
+    {
 
 
         ImageView imageButton = (ImageView) findViewById(R.id.profile_pic);
@@ -124,7 +111,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     //This class will get the image chosen by the user and store it in Bitmap format
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK && requestCode==select_image)
         {

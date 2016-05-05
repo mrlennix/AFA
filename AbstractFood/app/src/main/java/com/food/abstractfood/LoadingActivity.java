@@ -15,7 +15,6 @@ public class LoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         food = (Food) getIntent().getSerializableExtra("food");
-        //food = db.getOneFood(food);
         setContentView(R.layout.activity_loading);
         super.onCreate(savedInstanceState);
         logo = (ImageView)findViewById(R.id.logo_splat);

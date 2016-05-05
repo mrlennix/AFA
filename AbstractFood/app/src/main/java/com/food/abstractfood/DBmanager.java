@@ -9,7 +9,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 
 public class DBmanager {
-    private static Firebase database;
+    private /*static*/ Firebase database;
     private static final String url = "https://abstractfoods.firebaseio.com";
     private static final String foodpath = "food";
     private static final String userpath = "user";
@@ -19,7 +19,7 @@ public class DBmanager {
     private Food f;
 
     public DBmanager() {
-        if (database == null)
+
             setDatabase(new Firebase(url));
         foodnames = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class DBmanager {
     }
 
     public void putFood(Food food) {
-        food.encodeToBase64();
+
         database.child(getFoodpath()).child(String.valueOf(food.getID())).setValue(food);
     }
 
@@ -111,7 +111,7 @@ public class DBmanager {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
                     Food foo = shot.getValue(Food.class);
-                    foo.decodeBase64();
+
                     foods.add(foo);
                 }
             }
@@ -168,14 +168,12 @@ public Food getOneFood( Food foodselected)
                 if(f.getName().equals(temp.getName()))
                 {
                     f.setUsername(temp.getUsername());
-                    System.out.println(f.getUsername());
-                    f.setCompressedImage(temp.getCompressedImage());
                     f.setDescription(temp.getDescription());
                     f.setDate(temp.getDate());
                     f.setID(temp.getID());
                     f.setLikes(temp.getLikes());
                     f.setDislikes(temp.getDislikes());
-                    f.decodeBase64();
+
 
                     break;
                 }

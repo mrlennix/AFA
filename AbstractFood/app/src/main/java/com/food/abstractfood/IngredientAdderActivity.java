@@ -49,21 +49,13 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
         setContentView(R.layout.activity_ingredientfinder);
         but = (Button)findViewById(R.id.igsearchbutton);
         but.setText("DONE");
-
-        //ingredients=(LinearLayout)findViewById(R.id.layout_ingredient_plus_minus);
-
-
         food=(Food)getIntent().getSerializableExtra("food");
-        food.decodeBase64();
+
 
         fromList = (Spinner)findViewById(R.id.fromList);
-
         indataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,ingred);
-
         indataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         fromList.setAdapter(indataAdapter);
-
         toList = (ListView) findViewById(R.id.Ilistview);
         outdataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<String>());
         outdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -92,18 +84,14 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
     public void loadIngredients() throws IOException
     {
         int i = 0;
-
-
         AssetManager am = getBaseContext().getAssets();
         InputStream ingredienttxt = am.open("Ingredients.txt");
         String tempingredient = "";
         ingred = new ArrayList<>();
-
         Scanner lineinput = new Scanner(ingredienttxt);
 
         while (lineinput.hasNextLine())
         {
-
             tempingredient = lineinput.nextLine();
             ingred.add(i, tempingredient);
             i++;
@@ -153,27 +141,19 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
             case R.id.igsearchbutton:
                 if( outdataAdapter.isEmpty())
                 {
-
                     Toast.makeText(getBaseContext(),"Please select at least one ingredient",Toast.LENGTH_LONG);
-
-
                 }
                 else
                 {
                     for( int i = 0 ; i< outdataAdapter.getCount(); i++ )
                     {
                         ingredientsselected.add(outdataAdapter.getItem(i).toString());
-
-
-
-
-
                     }
                     ingredientsList=new String[ingredientsselected.size()];
                     ingredientsList=ingredientsselected.toArray(ingredientsList);
                     food.setIngredientscontained(ingredientsList);
                     Intent next = new Intent(this,AddRecipeActivity.class);
-                    food.encodeToBase64();
+
 
                     db.putFood(food);
                     next.putExtra("food",food);
@@ -181,14 +161,8 @@ public class IngredientAdderActivity extends Activity implements View.OnClickLis
                     finish();
                 }
 
-
-                // More buttons go here (if any) ...
-
         }
 
-
-
     }
-
 
 }

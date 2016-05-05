@@ -34,8 +34,6 @@ public class ForgotUsernamePassword extends AppCompatActivity {
                 if(s.toString().equals(""))return;
                 user.setUsername(s.toString());
                 database.getUser(user);
-
-
             }
 
             @Override

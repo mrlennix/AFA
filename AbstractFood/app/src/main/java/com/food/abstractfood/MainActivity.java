@@ -1,6 +1,8 @@
 package com.food.abstractfood;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //MainActivity GUI
 //This class controls all GUI for the Home Page
@@ -23,7 +26,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LoginController controller;
     private User user= new User();
     private ArrayList<String> ingredientitems;
     private Intent ingredientintent;
@@ -43,14 +45,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         user = new User();
-
-        controller = new LoginController();
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
         username = (EditText)findViewById(R.id.editText);
-
         username.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -71,118 +69,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
         pass = (EditText)findViewById(R.id.passwordLogin);
-        //Don't need these at login
-         // set the app to start at the login
-//        try {
-//            loadIngredients();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
 
         //To fix the font of "hint"
         EditText passwordField=(EditText)findViewById(R.id.passwordLogin);
         passwordField.setTypeface(Typeface.DEFAULT);
 
         forgotUsername=(TextView)findViewById(R.id.forgotUsrNameOrPs);
-
-
         TextView newUser=(TextView)findViewById(R.id.newuser);
 
-
+        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),
+                R.drawable.pancake);
+        FoodImage pan = new FoodImage();
+        pan.setImage(bitmap);
+        Bitmap burg = BitmapFactory.decodeResource(getResources(),R.drawable.burgerimage);
+        FoodImage bu = new FoodImage();
+        bu.setImage(burg);
+        bu.encodeToBase64();
+        pan.encodeToBase64();
+        List<FoodImage> b = new ArrayList<>();
+        b.add(pan);
+        database.getDatabase().child("image").child("Pancakes").setValue(b);
 
 
     }
 
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu)
-//    {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu,menu);
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item)
-//    {
-//
-//        switch(item.getItemId())
-//        {
-//            case R.id.menu_food:food_page();return true;
-//            case R.id.menu_profile:profile_page();return true;
-//            case R.id.menu_discover:discover_page();return true;
-//            case R.id.menu_signup:signup_page();return true;
-//            case R.id.menu_update:update_page();return true;
-//            case R.id.menu_report:report_page();return true;
-//            case R.id.menu_add_recipe:add_res_page();return true;
-//            case R.id.menu_home:home_page();return true;
-//            case R.id.menu_listview:listview_page();return true;
-//            case R.id.splat:splat();return true;
-//            default: return false;
-//
-//        }
-//    }
-    private void splat()
-    {
-        Intent next = new Intent(this,LoadingActivity.class);
-
-        startActivity(next);
-    }
     private void signup_page()
     {
         Intent next = new Intent(this,SignupActivity.class);
-
-        startActivity(next);
-
-    }
-    private void listview_page()
-    {
-        Intent next = new Intent(this,FoodListViewActivity.class);
-
-        startActivity(next);
-    }
-    private void discover_page()
-    {
-        Intent next = new Intent(this, DiscoverActivity.class);
-        //next.putStringArrayListExtra("ingredientitems", ingredientitems);
-        startActivity(next);
-    }
-
-    private void profile_page()
-    {
-        Intent next = new Intent(this,ProfileActivity.class);
-        user.encodeToBase64();
-        next.putExtra("object",user);
-        startActivity(next);
-    }
-
-    private void food_page()
-    {
-        Intent next = new Intent(this,FoodActivity.class);
-
-        startActivity(next);
-
-    }
-
-    private void update_page()
-    {
-        Intent next = new Intent(this,UploadActivity.class);
-
-        startActivity(next);
-
-    }
-
-    private void report_page()
-    {
-        Intent next = new Intent(this,ReportActivity.class);
-
-        startActivity(next);
-
-    }
-    private void add_res_page()
-    {
-        Intent next = new Intent(this,AddRecipeActivity.class);
 
         startActivity(next);
 
@@ -197,29 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void loadIngredients() throws IOException
-//    {
-//        int i = 0;
-//
-//
-//        AssetManager am = getBaseContext().getAssets();
-//        InputStream ingredienttxt = am.open("Ingredients.txt");
-//        String tempingredient = "";
-//        ingredientitems = new ArrayList<>();
-//
-//        Scanner lineinput = new Scanner(ingredienttxt);
-//
-//        while (lineinput.hasNextLine())
-//        {
-//
-//            tempingredient = lineinput.nextLine();
-//            ingredientitems.add(i,tempingredient);
-//            i++;
-//
-//        }
-//
-//
-//    }
     public void forgotname(View v)
     {
         Intent forgotUN = new Intent(this,ForgotUsernamePassword.class);

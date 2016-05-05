@@ -21,12 +21,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class UploadActivity extends AppCompatActivity {
-    private UploadController controller;
+
     private EditText foodname, description;
     private ImageButton imgbutton;
     private Spinner spinner;
@@ -39,17 +41,13 @@ public class UploadActivity extends AppCompatActivity {
     private Food food = new Food();
     private String[] categoryList;
     private String selectedCategory;
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+    private List<FoodImage> foods = new ArrayList<>();
     private GoogleApiClient client;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         Firebase.setAndroidContext(this);
-        controller = new UploadController();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         ActionBar actionBar = getSupportActionBar();
@@ -69,56 +67,63 @@ public class UploadActivity extends AppCompatActivity {
         indataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(indataAdapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
                 selectedCategory = spinner.getSelectedItem().toString();
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent)
+            {
 
             }
         });
 
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == stupid) {
+        if (resultCode == RESULT_OK && requestCode == stupid)
+        {
             image = data.getData();
 
-            try {
+            try
+            {
                 imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image);
+                imageBitmap.createScaledBitmap(imageBitmap,100,50,true);
             } catch (IOException e) {
             }
+
             imgbutton.setImageURI(image);
+            FoodImage temp = new FoodImage();
+            temp.setImage(imageBitmap);
+            temp.encodeToBase64();
+            foods.add(temp);
 
         }
-
     }
 
     public void cancel (View v)
     {
-
         finish();
-
     }
 
-    public void getImage(View v) {
+    public void getImage(View v)
+    {
         Intent next = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(next, stupid);
     }
 
-    public void ingred_adder(View v) {
-
+    public void ingred_adder(View v)
+    {
         int x = new Random().nextInt();
         if(x<0)x=-1*x;
         Intent next = new Intent(this, IngredientAdderActivity.class);
@@ -126,22 +131,16 @@ public class UploadActivity extends AppCompatActivity {
         Date date = new Date();
         food.setName(foodname.getText().toString());
         food.setDescription(description.getText().toString());
-        food.setImage(imageBitmap);
         food.setID(x);
         food.setUsername(user.getUsername());
         food.setCategory(selectedCategory);
         food.setDate(DateFormat.format(date));
         food.setIngredientscontained(null);
-        food.encodeToBase64();
-        database.putFood(food);
+        database.getDatabase().child("image").child(food.getName()).setValue(foods);
         next.putExtra("food", food);
         startActivity(next);
         finish();
 
-
     }
-
-
-
 
 }

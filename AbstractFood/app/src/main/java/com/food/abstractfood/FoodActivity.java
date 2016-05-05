@@ -81,8 +81,6 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
         getSupportActionBar().setTitle(food.getName());
-
-
         aniImage = (ImageView)findViewById(R.id.aniImage);
         username = (TextView)findViewById(R.id.textView10);
         dateposted=(TextView)findViewById(R.id.textView11);
@@ -139,7 +137,6 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 user.setUsername(food.getUsername());
-                //user =database.getUser(user);
                 report.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vws) {
@@ -173,32 +170,9 @@ public class FoodActivity extends AppCompatActivity {
                 likes.setVisibility(View.VISIBLE);
 
 
-
-
-
-
                 Toast.makeText(getBaseContext(),food.getDate(),Toast.LENGTH_LONG);
                 Button listViewBtn = (Button) findViewById(R.id.listViewBtn);
 
-
-
-
-                //food.decodeBase64();
-//                if(food.getImage()!=null)map.add(food.getImage());
-//                else map.add(BitmapFactory.decodeResource(getResources(),R.drawable.paperclip));
-//                if(food.getName().equals("Pancakes"))
-//                {
-//                map.add(R.drawable.pancake);
-//                }
-//                else if(food.getName().equals("Burger"))
-//                {
-//                    map.add(R.drawable.burgerimage);
-//                }
-
-
-
-
-                //if(food.getImage()!=null)viewPagerFood.addView();
                 dateposted.setText(food.getDate());
                 username.setText(food.getUsername());
                 likes.setText(food.getLikes());
@@ -225,12 +199,9 @@ public class FoodActivity extends AppCompatActivity {
             }
 
 
-
-
             @Override
             public void onAnimationRepeat(Animation animation)
             {
-
 
             }
         });
@@ -238,11 +209,6 @@ public class FoodActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
 
     private class SwipeAdapterFoodPage extends PagerAdapter {
 
@@ -273,9 +239,6 @@ public class FoodActivity extends AppCompatActivity {
             imageView.setImageBitmap(map.get(position ));
             container.addView(item_view);
             return item_view;
-
-
-
         }
 
         public void destroyItem(ViewGroup container,int position,Object object){
@@ -289,8 +252,6 @@ public class FoodActivity extends AppCompatActivity {
 
         for(int x =0;x<map.size();x++)
             map.get(x).recycle();
-            
-
         super.onDestroy();
         System.gc();
         finish();

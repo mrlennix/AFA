@@ -15,7 +15,6 @@ public class Report
         setUsersWhoreported(new ArrayList<User>());
     }
 
-
     public Recipe getRecipeReported()
     {
         return recipeReported;

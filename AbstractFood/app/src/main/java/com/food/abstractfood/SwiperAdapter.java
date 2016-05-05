@@ -1,14 +1,8 @@
 package com.food.abstractfood;
 
-import android.app.FragmentManager;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.ViewGroup;
-import android.widget.EditText;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -36,8 +30,6 @@ public class SwiperAdapter extends FragmentStatePagerAdapter {
 
         return foodfragment;
     }
-
-
 
     @Override
     public int getCount() {

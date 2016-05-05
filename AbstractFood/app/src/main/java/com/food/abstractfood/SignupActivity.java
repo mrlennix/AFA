@@ -13,10 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,20 +37,14 @@ public class SignupActivity extends AppCompatActivity {
     private final int id=1;
     private int r;
     private int res=0;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Firebase.setAndroidContext(this);
         dBmanager=new DBmanager();
-
         database=new Firebase(url);
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         verifyPass = (EditText) findViewById(R.id.verifyPasswordtxt);
@@ -62,8 +53,6 @@ public class SignupActivity extends AppCompatActivity {
         email=(EditText) findViewById(R.id.email_signup);
         pass.setTypeface(Typeface.DEFAULT);
         verifyPass.setTypeface(Typeface.DEFAULT);
-
-
         addImage=(ImageButton)findViewById(R.id.addprofilepicture);
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +100,7 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    public void stuff(View v){
+    public void signUp(View v){
 
         if(pass.getText().toString().equals("")||verifyPass.getText().toString().equals("")||username.getText().toString().equals("")||email.getText().toString().equals(""))
         {
@@ -130,7 +119,6 @@ public class SignupActivity extends AppCompatActivity {
                 user.setUsername(username.getText().toString());
                 user.setEmail(email.getText().toString());
                 user.setImage(imageBitmap);
-                //int r=checkDuplicates(user);
 
                 if(r==1)
                 {
@@ -149,57 +137,9 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-
-
-
     private void startLogin(){
         Intent next=new Intent(this,MainActivity.class);
         startActivity(next);
-
-    }
-
-    //This function checks if the username already exists in the database
-    private void checkDuplicates()
-    {
-
-        database.child(userpath).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                for (DataSnapshot shot : dataSnapshot.getChildren())
-                {
-                    User u=shot.getValue(User.class);
-                    //System.err.println(u.getUsername());
-                    if(u.getUsername().equals(username.getText().toString()))
-                    {
-
-                        System.out.println("THEY ARE EQUAL!!!!!!");
-                        Toast.makeText(getBaseContext(),"Username already exists",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                    else
-                    {
-                        User user = new User();
-                        user.setPassword(pass.getText().toString());
-                        user.setUsername(username.getText().toString());
-                        user.setEmail(email.getText().toString());
-                        user.setImage(null);
-                        user.setSanswer(null);
-                        user.setSquestion(null);
-                        database.child(userpath).child(user.getUsername()).setValue(user);
-                        startLogin();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-
-        });
-
-
 
     }
 

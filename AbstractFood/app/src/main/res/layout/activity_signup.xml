@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:text="Sign up"
         android:id="@+id/signup"
-        android:onClick="stuff"
+        android:onClick="signUp"
 
         android:layout_alignTop="@+id/cancel_signup"
         android:layout_alignEnd="@+id/verifyPasswordtxt" />
