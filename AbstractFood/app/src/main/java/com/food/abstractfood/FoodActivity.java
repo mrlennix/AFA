@@ -64,7 +64,7 @@ public class FoodActivity extends AppCompatActivity {
 
                     }
                 }
-                if(map.isEmpty())map.add(BitmapFactory.decodeResource(getResources(),R.drawable.puker));
+                if(map.isEmpty())map.add(BitmapFactory.decodeResource(getResources(),R.drawable.plate));
                 viewPagerFood = (ViewPager) findViewById(R.id.food_page_view_pager);
                 swipeAdapterFoodPage = new SwipeAdapterFoodPage(getApplicationContext());
                 viewPagerFood.setAdapter(swipeAdapterFoodPage);
@@ -114,9 +114,15 @@ public class FoodActivity extends AppCompatActivity {
         database.getDatabase().child(database.getUserpath()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                    System.out.println(dataSnapshot.child(food.getUsername()).getChildrenCount());;
+                    if(dataSnapshot.child(food.getUsername()).getValue(User.class).getCompressedImage() == null)
+                    {
+                        user.setImage(BitmapFactory.decodeResource(getResources(),R.drawable.addprofilepicture));
+                        return;
+                    }else
+                    {
                     user.setCompressedImage(dataSnapshot.child(food.getUsername()).getValue(User.class).getCompressedImage());
                     user.decodeBase64();
+                    }
                     image.setImageBitmap(user.getImage());
             }
 

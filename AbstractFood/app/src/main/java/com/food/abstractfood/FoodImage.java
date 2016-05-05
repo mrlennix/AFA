@@ -6,9 +6,7 @@ import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
 
-/**
- * Created by Manny on 5/4/16.
- */
+
 public class FoodImage
 {
     private Bitmap image;
